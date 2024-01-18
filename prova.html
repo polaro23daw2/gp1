@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Relacionar Países</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .country {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .location {
+            padding: 10px;
+            border: 2px dashed #333;
+            border-radius: 10px;
+            margin: 20px;
+            background-color: #f0f0f0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Juego de Relacionar Países</h1>
+
+    <div class="container">
+        <div class="country" draggable="true" data-country="USA">USA</div>
+        <div class="country" draggable="true" data-country="Canada">Canada</div>
+        <div class="country" draggable="true" data-country="Brazil">Brazil</div>
+        <div class="country" draggable="true" data-country="France">France</div>
+    </div>
+
+    <div class="container">
+        <div class="location" ondrop="drop(event)" ondragover="allowDrop(event)">Ubicación 1</div>
+        <div class="location" ondrop="drop(event)" ondragover="allowDrop(event)">Ubicación 2</div>
+        <div class="location" ondrop="drop(event)" ondragover="allowDrop(event)">Ubicación 3</div>
+        <div class="location" ondrop="drop(event)" ondragover="allowDrop(event)">Ubicación 4</div>
+    </div>
+
+    <div class="feedback"></div>
+
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const draggedCountry = event.dataTransfer.getData("text");
+
+            const feedbackElement = document.querySelector(".feedback");
+
+            // Verificar si el país se coloca en la ubicación correcta
+            if (event.target.classList.contains("location")) {
+                const locationElement = event.target;
+                const expectedCountry = locationElement.dataset.expectedCountry;
+
+                if (draggedCountry === expectedCountry) {
+                    locationElement.textContent = draggedCountry;
+                    feedbackElement.textContent = "¡Correcto!";
+                } else {
+                    feedbackElement.textContent = "Incorrecto, intenta de nuevo.";
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const countries = document.querySelectorAll(".country");
+            const locations = document.querySelectorAll(".location");
+
+            countries.forEach(country => {
+                country.addEventListener("dragstart", function (event) {
+                    event.dataTransfer.setData("text", event.target.dataset.country);
+                });
+            });
+
+            locations.forEach(location => {
+                // Asignar un país esperado a cada ubicación
+                const randomCountry = getRandomCountry();
+                location.dataset.expectedCountry = randomCountry;
+            });
+        });
+
+        function getRandomCountry() {
+            const countryList = ["USA", "Canada", "Brazil", "France"];
+            const randomIndex = Math.floor(Math.random() * countryList.length);
+            return countryList[randomIndex];
+        }
+    </script>
+</body>
+
+</html>

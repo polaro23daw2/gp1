@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index | GP1 - Aigües</title>
+    <link rel="icon" type="image/png" href="logoaguas.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <header class="page__header">
+        <button id="openPopup">popup</button>
+        <nav class="navigation__container">
+            <div class="navigation__container--navs navigation__container--fixed navigation__container--top">
+                <section class="desktopNav__container" data-top-component="desktop-nav" data-page-position="nav">
+                    <div class="desktopNav">
+                        <div class="desktopNav__upper">
+                            <div class="desktopNav__tabAndLogoContainer">
+                                <div class="insider desktopNav__tabContainer">
+                                </div>
+                                <a class="desktopNav__logo" href="/">
+                                    <img src="aigues-de-barcelona-logo.png" alt="Aigues de Barcelona Logo" height="50">
+                                </a>
+                            </div>
+                            <div class="desktopNav__lower">
+                                <ul class="desktopNav__linkContainer">
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-0"
+                                            class="desktopNav__link mvl-flyout-button" href="noticies.html">Notícies</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-0"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-1"
+                                            class="desktopNav__link mvl-flyout-button" href="#comics">Còmics</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-1"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-2"
+                                            class="desktopNav__link mvl-flyout-button" href="#characters">Characters</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-2"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-3"
+                                            class="desktopNav__link mvl-flyout-button" href="#movies">Movies</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-3"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-4"
+                                            class="desktopNav__link mvl-flyout-button" href="#tvshows">TV Shows</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-4"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-5"
+                                            class="desktopNav__link mvl-flyout-button" href="#games">Games</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-5"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-6"
+                                            class="desktopNav__link mvl-flyout-button" href="#videos">Videos</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-6"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-7"
+                                            class="desktopNav__link mvl-flyout-button"
+                                            href="sobre-nosaltres.html">Més</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-7"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                </section>
+            </div>
+        </nav>
+    </header>
+    <div class="slider-wrap">
+        <div class="single-slide" id="slide-1"></div>
+        <div class="single-slide" id="slide-2"></div>
+        <div class="single-slide" id="slide-3"></div>
+        <div class="single-slide" id="slide-4"></div>
+        <div class="single-slide" id="slide-5"></div>
+    </div>
+    <br><br><br>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close-popup" id="closePopup">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <button class="animated-button">Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <center>
+        <h1>RELACIONA!</h1>
+
+        <h2>Drag and Drop</h2>
+        <p>Relaciona cada país amb el que creus que tingui més aigua en poder</p>
+        <br>
+        <div id="contenedor">
+            <div id="Brasil" class="draggable" draggable="true">Brasil</div>
+            <div id="Indonesia" class="draggable" draggable="true">Indonesia</div>
+            <div id="Rusia" class="draggable" draggable="true">Rusia</div>
+            <div id="Canadá" class="draggable" draggable="true">Canadá</div>
+            <div id="China" class="draggable" draggable="true">China</div>
+        </div>
+
+        <table class="tablagame">
+            <tr>
+                <td>TOP 1.</td>
+                <td class="m06 droppable" id="top1">
+                    <span id="drop1"></span>
+                    <div class="resultado"></div>
+                </td>                
+            </tr>
+            <tr>
+                <td>TOP 2.</td>
+                <td class="m06 droppable" id="top2">
+                    <span id="drop2"></span>
+                    <div class="resultado"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>TOP 3.</td>
+                <td class="m06 droppable" id="top3">
+                    <span id="drop3"></span>
+                    <div class="resultado"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>TOP 4.</td>
+                <td class="m06 droppable" id="top4">
+                    <span id="drop4"></span>
+                    <div class="resultado"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>TOP 5.</td>
+                <td class="m06 droppable" id="top5">
+                    <span id="drop5"></span>
+                    <div class="resultado"></div>
+                </td>
+            </tr>
+        </table>
+        <script>
+        // Función para abrir el popup
+        document.getElementById("openPopup").addEventListener("click", function () {
+        document.getElementById("popup").style.display = "block";
+        });
+
+        // Función para cerrar el popup
+        document.getElementById("closePopup").addEventListener("click", function () {
+        document.getElementById("popup").style.display = "none";
+});
+
+        </script>
+        <br><br><br>
+        <footer class="page__header">
+            <div class="columna">
+                <p>© 2024 Balarocarjó</p>
+            </div>
+            <div class="columna">
+                <h2>Direcció</h2>
+                <a href="#" class="desktopNav__link mvl-flyout-button">C/ de València, 680, Sant Martí, 08027
+                    Barcelona</a>
+            </div>
+            <div class="columna">
+                <h2>Contacte</h2>
+                <p>Email: <a href="mailto:info@fjeclot.edu">info@fjeclot.edu</a></p>
+                <p>Teléfono: (+34) <a href="tel:933525052">933 52 50 52</a></p>
+            </div>
+
+
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script type="text/javascript" src="game.js"></script>
+        <script type="text/javascript" src="drag.js"></script>
+        <script type="text/javascript" src="brands.js"></script>
+</body>
+
+</html>
