@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre nosaltres | GP1 - Aigües</title>
-    <link rel="icon" type="image/png" href="logoaguas.jpeg">
+    <title>Sobre nosotros | GP1 - Aigües</title>
+    <link rel="icon" type="image/png" href="logo-negro.png">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="popup.css">
 </head>
 
 <body>
     <header class="page__header">
+        <button type="button" id="openPopup" class="botonlogin"><img src="user.png"></button>
         <nav class="navigation__container">
             <div class="navigation__container--navs navigation__container--fixed navigation__container--top">
                 <section class="desktopNav__container" data-top-component="desktop-nav" data-page-position="nav">
@@ -20,46 +22,50 @@
                                 <div class="insider desktopNav__tabContainer">
                                 </div>
                                 <a class="desktopNav__logo" href="/">
-                                    <img src="aigues-de-barcelona-logo.png" alt="Aigues de Barcelona Logo"  height="50">
-                                </a>                                
+                                    <img src="logo-blanco.png" alt="Logo nuestro" height="70">
+                                </a>
+                            </div>
+                            <div class="desktopNav__lower">
+                                <ul class="desktopNav__linkContainer">
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-0"
+                                            class="desktopNav__link mvl-flyout-button" href="marco.html">Marco Teórico</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-0"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-1"
+                                            class="desktopNav__link mvl-flyout-button" href="seguridad-nacional.html">Agua en S.N.</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-1"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-2"
+                                            class="desktopNav__link mvl-flyout-button" href="conflictos.html">Conflictos</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-2"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-3"
+                                            class="desktopNav__link mvl-flyout-button" href="gestion-recursos.html">Gestión de recursos</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-3"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-4"
+                                            class="desktopNav__link mvl-flyout-button" href="derecho-internacional.html">Derecho internacional</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-4"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-5"
+                                            class="desktopNav__link mvl-flyout-button" href="tecnologias.html">Tecnologías y estrategias</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-5"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-6"
+                                            class="desktopNav__link mvl-flyout-button" href="cambio-climatico.html">Cambio climático</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-6"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-7"
+                                            class="desktopNav__link mvl-flyout-button" href="conclusiones.html">Conclusiones</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-7"></div>
+                                    </li>
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-7"
+                                        class="desktopNav__link mvl-flyout-button" href="sobre-nosaltres.html">Nosotros</a>
+                                    <div class="desktopNav__flyout-container nav-flyout-container-7"></div>
+                                </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="desktopNav__lower">
-                            <ul class="desktopNav__linkContainer">
-                                <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-0"
-                                        class="desktopNav__link mvl-flyout-button" href="noticies.html">Notícies</a>
-                                    <div class="desktopNav__flyout-container nav-flyout-container-0"></div>
-                                </li>
-                                <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-1"
-                                        class="desktopNav__link mvl-flyout-button" href="#comics">Comics</a>
-                                    <div class="desktopNav__flyout-container nav-flyout-container-1"></div>
-                                </li>
-                                <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-2"
-                                        class="desktopNav__link mvl-flyout-button" href="#characters">Characters</a>
-                                    <div class="desktopNav__flyout-container nav-flyout-container-2"></div>
-                                </li>
-                                <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-3"
-                                        class="desktopNav__link mvl-flyout-button" href="#movies">Movies</a>
-                                    <div class="desktopNav__flyout-container nav-flyout-container-3"></div>
-                                </li>
-                                <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-4"
-                                        class="desktopNav__link mvl-flyout-button" href="#tvshows">TV Shows</a>
-                                    <div class="desktopNav__flyout-container nav-flyout-container-4"></div>
-                                </li>
-                                <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-5"
-                                        class="desktopNav__link mvl-flyout-button" href="#games">Games</a>
-                                    <div class="desktopNav__flyout-container nav-flyout-container-5"></div>
-                                </li>
-                                <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-6"
-                                        class="desktopNav__link mvl-flyout-button" href="#videos">Videos</a>
-                                    <div class="desktopNav__flyout-container nav-flyout-container-6"></div>
-                                </li>
-                                <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-7"
-                                    class="desktopNav__link mvl-flyout-button" href="sobre-nosaltres.html">Més</a>
-                                <div class="desktopNav__flyout-container nav-flyout-container-7"></div>
-                            </li>
-                            </ul>
-                        </div>
-                    </div>
                 </section>
             </div>
         </nav>
@@ -71,8 +77,24 @@
         <div class="single-slide" id="slide-4"></div>
         <div class="single-slide" id="slide-5"></div>
     </div>
+    <br><br><br>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close-popup" id="closePopup">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="username">Usuari</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Contrasenya</label>
+                <input type="password" id="password" name="password" required>
+                <br><br>
+                <button class="animated-button">Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
+    <script src="login.js"></script>
     
-<br><br><br>
 
 <center>
     <h1> Projecte GP1 - Aigües </h1>
@@ -151,6 +173,28 @@
             Uneix-te a la nostra comunitat i explorarem junts el fascinant món de les aigües compartides. </p>
      </div>
 </div>
+
+<h1>Deja tu Reseña</h1>
+  <textarea id="reseñaNombre" rows="1" cols="50" placeholder="Escribe tu nombre"></textarea><br>
+  <textarea id="reseñaTexto" rows="4" cols="50" placeholder="Escribe tu reseña aquí"></textarea>
+  <br>
+  <label for="calificacion">Calificación:</label>
+  <select id="calificacion" name="calificacion">
+    <option value="1">1 estrella</option>
+    <option value="1.5">1.5 estrellas</option>
+    <option value="2">2 estrellas</option>
+    <option value="2.5">2.5 estrellas</option>
+    <option value="3">3 estrellas</option>
+    <option value="3.5">3.5 estrellas</option>
+    <option value="4">4 estrellas</option>
+    <option value="4.5">4.5 estrellas</option>
+    <option value="5">5 estrellas</option>
+  </select>
+  <br><br>
+  <button onclick="guardarReseña()">Guardar Reseña</button>
+  <button onclick="limpiarReseñas()">Limpiar Reseñas</button>
+  <div id="historialReseñas" class="reviews-section"></div>
+  <script src="resenas.js"> </script>
 
 <footer class="page__header">
         <div class="columna">

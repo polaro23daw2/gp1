@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index | GP1 - Aigües</title>
+    <title>Conclusiones y Recomendaciones | GP1 - Aigües</title>
     <link rel="icon" type="image/png" href="logo-negro.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="popup.css">
@@ -95,141 +95,13 @@
     </div>
     <script src="login.js"></script>
     <center>
-        <h1>RELACIONA!</h1>
-
-        <h2>Drag and Drop</h2>
-        <p>Relaciona cada país amb el que creus que tingui més aigua en poder</p>
-        <br>
-        <div id="contenedor">
-            <div id="Brasil" class="draggable" draggable="true">Brasil</div>
-            <div id="Indonesia" class="draggable" draggable="true">Indonesia</div>
-            <div id="Rusia" class="draggable" draggable="true">Rusia</div>
-            <div id="Canadá" class="draggable" draggable="true">Canadá</div>
-            <div id="China" class="draggable" draggable="true">China</div>
-        </div>
-
-        <table class="tablagame">
-            <tr>
-                <td>TOP 1.</td>
-                <td class="m06 droppable" id="top1">
-                    <span id="drop1"></span>
-                    <div class="resultado"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>TOP 2.</td>
-                <td class="m06 droppable" id="top2">
-                    <span id="drop2"></span>
-                    <div class="resultado"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>TOP 3.</td>
-                <td class="m06 droppable" id="top3">
-                    <span id="drop3"></span>
-                    <div class="resultado"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>TOP 4.</td>
-                <td class="m06 droppable" id="top4">
-                    <span id="drop4"></span>
-                    <div class="resultado"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>TOP 5.</td>
-                <td class="m06 droppable" id="top5">
-                    <span id="drop5"></span>
-                    <div class="resultado"></div>
-                </td>
-            </tr>
-        </table>
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        
-        <canvas id="myChart" width="600" height="600"></canvas>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const canvas = document.getElementById('myChart').getContext('2d');
-                const chart = new Chart(canvas, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Uso Doméstico', 'Entorno Industrial', 'Ganado', 'Irrigación'],
-                        datasets: [{
-                            data: [10.7, 21.3, 0.4, 67.6], // Porcentajes actualizados
-                            backgroundColor: [
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(200, 200, 200, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: 'Distribución del Uso del Agua en España'
-                            }
-                        },
-                        responsive: false, // Deshabilita la responsividad
-                        maintainAspectRatio: false, // Deshabilita la relación de aspecto
-                    }
-                });
-            });
-        </script>
-
-
-
-        <br><br><br>
-        <footer class="page__header">
-            <div class="columna">
-                <h2>Direcció</h2>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.217023956609!2d2.187923576060926!3d41.41280737129661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a32f21aff871%3A0x8a22bf1df6194fbd!2sEscola%20Jesu%C3%AFtes%20El%20Clot!5e0!3m2!1sca!2ses!4v1700584988956!5m2!1sca!2ses" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>          
-            </div>
-
-            <div class="columna">
-                <h2>Reseñas</h2>
-                <div class="reviews-section">
-                    <div class="rating">4.8 <img src="star.png" height="20px"></div>
-                    <div class="review-count">Basado en 257 reseñas</div>
-                
-                    <div class="review">
-                      <div class="user">Usuario1</div>
-                      <div class="date">12 de febrero de 2023</div>
-                      <div class="comment">¡Excelente servicio! Muy satisfecho con la calidad y la atención al cliente.</div>
-                    </div>
-                
-                    <div class="review">
-                      <div class="user">Usuario2</div>
-                      <div class="date">8 de enero de 2024</div>
-                      <div class="comment">Producto de alta calidad. Entrega rápida. Recomiendo totalmente.</div>
-                    </div>
-
-                    <div class="review">
-                        <div class="user">Usuario2</div>
-                        <div class="date">15 de diciembre de 2023</div>
-                        <div class="comment">Producto de alta calidad. Entrega rápida. Recomiendo totalmente.</div>
-                      </div>
-                
-                  </div>
-                </div>
-
-            <div class="columna">
-                <h2>Contacte</h2>
-                <br><br>
-                <p>Email: <a href="mailto:info@fjeclot.edu">info@fjeclot.edu</a></p>
-                <p>Teléfono: (+34) <a href="tel:933525052">933 52 50 52</a></p>
-            </div>
-
-
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script type="text/javascript" src="game.js"></script>
-        <script type="text/javascript" src="drag.js"></script>
-        <script type="text/javascript" src="brands.js"></script>
+        <h1> CONCLUSIONES Y RECOMENDACIONS</h1>
+    </center>
+    <br><br><br>
+    <div class="contenido-pagina">
+        <h2><b>Definición de Seguridad Hídrica</b></h2>
+        <p>Es la capacidad de garantizar el acceso sostenible, equitativo y suficiente al agua para satisfacer las necesidades humanas básicas, así como para mantener la salud de los ecosistemas</p>
+        <p></p>
+    </div>
 </body>
-
 </html>
