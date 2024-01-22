@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    margin: auto;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.page__header {
+    background-color: black;
+    color: #fff;
+    padding: 10px 0;
+    position: relative; /* Añadido para permitir posicionamiento relativo */
+}
+
+.navigation__container {
+    text-align: center;
+}
+
+.desktopNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+/* Agrega estilos para el icono al lado derecho del texto */
+.correcto::after {
+    content: url('../png/check.png'); /* Ruta a la imagen de verificación */
+    display: inline-block;
+    margin-left: 5px;
+    width: 20px;
+}
+
+.incorrecto::after {
+    content: url('../png/creu.png'); /* Ruta a la imagen de error */
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.desktopNav__logo {
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.desktopNav__linkContainer {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.desktopNav__linkWrapper {
+    margin-right: 15px;
+    margin-top: 30px;
+}
+
+.desktopNav__link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.desktopNav__link:hover {
+    color: blue;
+}
+
+.loginButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.slider-wrap {
+    width: 100%;
+    height:600px;
+    position: relative;
+  }
+  .single-slide {
+    width: 100%;
+      height: 100%;
+      position: absolute;
+    opacity: 0;
+  animation: slider-animation;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+    background-size: cover;
+  }
+  
+  #slide-1 {animation: none; opacity: 1;background-color: blueviolet; background-image: url(https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2023/09/27/16958246869027.jpg);}
+  #slide-2 {background-color: rebeccapurple; animation-delay: 5s; background-image: url(https://ingeniosanos.upct.es/storage/20181475217_rioscurvos.jpg);}
+  #slide-3 {background-color: orange; animation-delay: 10s; background-image: url(https://s1.eestatic.com/2023/08/17/enclave-ods/historias/787431593_235419609_1706x960.jpg);}
+  #slide-4 {background-color: blue; animation-delay: 15s; background-image: url(https://www.agenciabonitodemais.com.br/wp-content/uploads/2023/02/quais-os-principais-rios-de-bonito-ms.webp);}
+  #slide-5 {background-color: rgb(14, 124, 175); animation-delay: 20s; background-image: url(https://viajes.nationalgeographic.com.es/medio/2020/09/15/rio-iregua-la-rioja_499460ff_1254x837.jpg);}
+  
+  @keyframes slider-animation {
+      
+  0% {
+      opacity: 0;
+  }
+  6% {
+      opacity: 1;
+  }
+  24% {
+      opacity: 1;
+  }
+  30% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 0;
+  }
+  }
+
+  .container-busqueda {
+    display: flex;
+    max-width: 300px;
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+button {
+    background-color: #007bff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* Invertir el color del icono */
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+#contingut {
+    align-items: center;
+    margin-left: 40px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f0f0f0; /* Puedes ajustar el color de fondo según tu diseño */
+    padding: 10px;
+  }
+
+  .columna {
+    flex: 1;
+    text-align: center; /* Puedes ajustar la alineación del texto según tus preferencias */
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-container,
+.text-container {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.text-container p {
+    text-align: justify;
+    margin: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.texto p {
+    align-items: center;
+    margin: 100px;
+}
+
+#div1, #div2 {
+    width: 100px;
+    box-sizing: border-box;
+    flex: 1;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#contenedor {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.tablagame {
+border-collapse: collapse;
+width: 50%;
+margin: 20px;
+}
+
+.tablagame td {
+border: 1px solid #ddd;
+padding: 8px;
+text-align: center;
+}
+
+.draggable {
+margin: 0;
+padding: 10px;
+border: 1px solid #ddd;
+cursor: move;
+display: inline-block;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.reviews-section {
+    max-width: 500px;
+    height: 200px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow-y: auto;
+  }
+
+  .rating {
+    font-size: 24px;
+    color: #ff9800; /* Color de las estrellas (naranja) */
+  }
+
+  .review-count {
+    font-size: 16px;
+    color: #333;
+  }
+
+  .review {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+
+  .review .user {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .review .date {
+    color: #777;
+    font-size: small;
+  }
+
+  .review .comment {
+    color: #555;
+  }
+
+  .reseña {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 300px; /* Ajusta el ancho según tus preferencias */
+    display: inline-block;
+  }
+
+  .contenido-pagina {
+    max-width: 800px; /* Establece un ancho máximo para el contenido */
+    margin: 10px; /* Centra el contenido y añade márgenes superior e inferior */
+    padding: 20px; /* Añade relleno al contenido */
+    background-color: #fff;
+    border-radius: 8px;
+  }
+
+  h1 {
+    align-items: center;
+  }
+
+  h1, h2, p {
+    margin-bottom: 15px; /* Añade márgenes inferiores a títulos y párrafos para separarlos visualmente */
+  }
+
+  .section-text {
+    display: flex;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+  }
+
+  .section-text.open {
+    max-height: 1000px; /* Ajusta el valor según sea necesario para mostrar toda la información */
+    transition: max-height 1s ease-in-out;
+  }
+
+  .image-container {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .text-container {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .text-container p {
+    margin-bottom: 15px;
+  }
+
+  .toggle-button {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px 0;
+  }
