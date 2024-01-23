@@ -5,7 +5,6 @@ const querystring = require('querystring');
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-// Reemplaza 'tuCadenaDeConexion' con tu cadena de conexión real a MongoDB
 const cadenaConexion = 'mongodb://localhost:27017';
 
 function usuarioYContraseñaSonCorrectos(db, username, password, callback) {
@@ -22,22 +21,24 @@ function usuarioYContraseñaSonCorrectos(db, username, password, callback) {
 
 function iniciar() {
     function onRequest(request, response) {
-        const parsedUrl = url.parse(request.url, true); // true para parsear también los parámetros
+        const parsedUrl = url.parse(request.url, true);
         const ruta = parsedUrl.pathname;
 
-         if(ruta == '/index'  && request.method === 'GET'){
-            fs.readFile("../html/index.html", function(err, html) {
+        // Rutas para servir archivos HTML
+        if (ruta === '/index' && request.method === 'GET') {
+            fs.readFile("html/index.html", function(err, html) {
                 if (err) {
+                    console.error("Error al leer index.html:", err);
                     response.writeHead(500);
-                    response.end('Error del servidor');
-                } else {
-                    response.writeHead(200, { "Content-Type": "text/html" });
-                    console.log("he arribat");
-                    response.end(html);
+                    response.end('Error del servidor: ' + err.message);
+                    return;
                 }
+                response.writeHead(200, { "Content-Type": "text/html" });
+                response.end(html);
             });
-        }else if(ruta === '/login' && request.method === 'GET') {
-            fs.readFile("../html/M11_login.html", function(err, html) {
+            
+        } else if (ruta === '/login' && request.method === 'GET') {
+            fs.readFile("html/M11_login.html", function(err, html) {
                 if (err) {
                     response.writeHead(500);
                     response.end('Error al leer el archivo');
@@ -77,7 +78,7 @@ function iniciar() {
                             response.end('Usuario o contraseña incorrectos');
                         }
                     });
-                });
+                }); 
             });
         } else if (ruta === '/register' && request.method === 'POST') {
             let body = '';
@@ -124,7 +125,7 @@ function iniciar() {
             const cookies = parseCookies(request);
             if (cookies.logged && cookies.logged === 'true') {
                 // Si la sesión es válida, servir final.html
-                fs.readFile("../html/final.html", function(err, html) {
+                fs.readFile("html/index.html", function(err, html) {
                     if (err) {
                         response.writeHead(500);
                         response.end('Error del servidor');
@@ -140,9 +141,12 @@ function iniciar() {
                 });
                 response.end();
             }
-        }else if (ruta.startsWith('../png/') || ruta.startsWith('../css/') || ruta.startsWith('../js/')) {
-            const filePath = '.' + ruta;
-            const fileExtension = filePath.split('.').pop();
+        }
+
+        // Rutas para servir archivos estáticos (CSS, JS, PNG)
+        else if (ruta.startsWith('/css/') || ruta.startsWith('/js/') || ruta.startsWith('/png/')) {
+            const filePath = ruta.substring(1);
+            const fileExtension = ruta.split('.').pop();
 
             fs.readFile(filePath, function(err, content) {
                 if (err) {
@@ -161,14 +165,18 @@ function iniciar() {
                 }
 
                 response.writeHead(200, { "Content-Type": contentType });
-                response.end(content, 'utf-8');
+                response.end(content);
             });
+        } else {
+            response.writeHead(404);
+            response.end("Ruta no encontrada");
         }
     }
 
     http.createServer(onRequest).listen(8888);
     console.log("Servidor iniciado en http://localhost:8888");
 }
+
 function parseCookies(request) {
     let list = {},
         rc = request.headers.cookie;
@@ -180,4 +188,5 @@ function parseCookies(request) {
 
     return list;
 }
+
 exports.iniciar = iniciar;
