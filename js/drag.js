@@ -23,6 +23,10 @@ function dragLeave(event) {
         event.target.classList.remove("droppable-hover");
     }
 }
+var Etable = document.getElementById('20')
+var nuevoTd = document.createElement('td');
+var nuevoDiv = document.createElement('div');
+
 
 // Esta función se llama cuando un elemento arrastrable se suelta sobre un destino de soltar.
 function drop(event) {
@@ -37,18 +41,39 @@ function drop(event) {
     dropZone.classList.remove('droppable-hover');
 
     const esCorrecto = verificarSiEsCorrecto(dropZone.id, data);
+
+    // Crear un nuevo td para la imagen
+    const imagenTd = document.createElement('td');
+    
     if (esCorrecto) {
         // Agregar el icono de verificación después del texto
         resultadoDiv.classList.add('correcto');
         resultadoDiv.classList.remove('incorrecto');
-    } else {
+        
+        // Crear un nuevo elemento img
+        const imagen = document.createElement('img');
+        imagen.src = '../png/check.png'; // Reemplaza con la URL de tu imagen correcta
+        imagen.alt = 'Imagen correcta'; // Puedes proporcionar un texto alternativo
+        imagenTd.appendChild(imagen); // Agregar la imagen al td
+    
+    }else if (verificarTodosCorrectos()) {
+        alert('¡Todo correcto!');
+    }else {
         // Agregar el icono de error después del texto
+        resultadoDiv.textContent = '¡Respuesta Incorrecta!';
         resultadoDiv.classList.remove('correcto');
         resultadoDiv.classList.add('incorrecto');
+        
+        // Crear un nuevo elemento img
+        const imagen = document.createElement('img');
+        imagen.src = '../png/creu.png'; // Reemplaza con la URL de tu imagen incorrecta
+        imagen.alt = 'Imagen incorrecta'; // Puedes proporcionar un texto alternativo
+        imagenTd.appendChild(imagen); // Agregar la imagen al td
     }
-}
 
-// Resto del código sin cambios
+    // Agregar el nuevo td con la imagen al tr
+    dropZone.parentNode.appendChild(imagenTd);
+}
 
 
 function verificarSiEsCorrecto(idTop, pais) {
@@ -62,7 +87,22 @@ function verificarSiEsCorrecto(idTop, pais) {
     return ordenCorrecto[idTop] === pais;
 }
 
-
+function verificarTodosCorrectos() {
+    // Obtener todos los elementos droppable
+    var todosCorrectos = true;
+    for (const id in ordenCorrecto) {
+        const topElement = document.getElementById(id);
+        const span = topElement.querySelector('span');
+        const esperado = ordenCorrecto[id];
+        
+        // Si alguno no coincide, entonces no todos son correctos
+        if (span.textContent !== esperado) {
+            todosCorrectos = false;
+            break;
+        }
+    }
+    return todosCorrectos;
+}
 
 // Asociar eventos a los elementos arrastrables y a los destinos de soltar.
 var paises = document.querySelectorAll('.draggable');

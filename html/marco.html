@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,7 +21,7 @@
                             <div class="desktopNav__tabAndLogoContainer">
                                 <div class="insider desktopNav__tabContainer">
                                 </div>
-                                <a class="desktopNav__logo" href="/">
+                                <a class="desktopNav__logo" href="/index">
                                     <img src="../png/logo-blanco.png" alt="Logo nuestro" height="70">
                                 </a>
                             </div>
@@ -98,7 +98,13 @@
         <h1> MARCO TEÓRICO</h1>
     </center>
     <br><br><br>
-  
+    <button class="toggle-button" onclick="toggleInfo1()">1. Definición de Seguridad Hídrica</button>
+    <script>
+        function toggleInfo1() {
+          const infoSection1 = document.getElementById('infoSection1');
+          infoSection1.classList.toggle('open');
+        }
+      </script>
     <div class="section-text" id="infoSection1">
         <div class="image-container">
           <img src="../png/SeguridadHidrica_spa.jpg" height="400px" alt="Seguridad Hídrica">
@@ -109,42 +115,38 @@
                     <p>Esta seguridad implica la gestión adecuada de los recursos hídricos para prevenir la escasez, mejorar la calidad del agua, proteger contra inundaciones y asegurar la disponibilidad de agua para todos los usos esenciales, como el consumo humano, la agricultura y la industria.</p>
         </div>
     </div>
-    <button class="toggle-button" onclick="toggleInfo1()">1. Definición de Seguridad Hídrica</button>
-    <script>
-        function toggleInfo1() {
-          const infoSection1 = document.getElementById('infoSection1');
-          infoSection1.classList.toggle('open');
+      <button class="toggle-button" onclick="toggleInfo2()">2. Tratados y convenios Internacionales</button>
+      <script>
+        function toggleInfo2() {
+          const infoSection2 = document.getElementById('infoSection2');
+          infoSection2.classList.toggle('open');
         }
       </script>
     <div class="section-text" id="infoSection2">
-        <div class="image-container">
-          <img src="../SeguridadHidrica_spa.jpg" height="400px" alt="Seguridad Hídrica">
-        </div>
-    <p><b>2. Tratados y convenios Internacionales</b></p>
-                    <p>Los principales tratados y convenios que regulan el uso de aguas transfronterizas</p>
-                    <p><u><b>Principios Jurídicos</b></u></p>
-                    <p><u><b>Casos de Estudio</b></u></p>
-                        <p> <b>Cuenca del río Danubio</b>
-                            Éxito: La Comisión Internacional para la Protección del Danubio ha facilitado la cooperación entre los países ribereños, logrando avances en la gestión sostenible y reducción de la contaminación.
-                            Desafío: Dificultades en la gestión de embalses y represas, evidenciando la complejidad de equilibrar intereses divergentes.<br><br>
-                    
-                            <b>Río Mekong</b>
-                            Éxito: El Acuerdo para la Cooperación en la Gestión y Uso Sostenible de los Recursos Hídricos en la Cuenca del Río Mekong ha promovido la colaboración regional para abordar problemas comunes, como la gestión de represas y la protección del ecosistema.
-                            Desafío: Disputas sobre la construcción de represas, subrayando la necesidad de una gestión cuidadosa y cooperativa.</p>
-                    <p><u><b>Subsección sobre Teorías de Conflictos y su Aplicación al Recurso Hídrico</b></u></p>
-                    <p><b> Teoría del Conflicto por Intereses Divergentes:</p>b>
-                        Aplicación: Cuando los estados ribereños tienen necesidades y objetivos contrastantes en el uso del agua, la negociación y la búsqueda de soluciones equitativas son esenciales para evitar conflictos.
-                
-                        <b>Teoría del Conflicto por Escasez de Recursos:</b>
-                        Aplicación: En situaciones de escasez de agua, la cooperación se vuelve crucial para evitar conflictos violentos. Estrategias como la gestión eficiente del agua y la inversión en tecnologías sostenibles son fundamentales.</p>
+        <div class="column">
+            <p><b>2. Tratados y convenios Internacionales</b></p>
+            <p>Los principales tratados y convenios que regulan el uso de aguas transfronterizas</p>
+            <p><u><b>Principios Jurídicos</b></u></p>
+            <p><u><b>Casos de Estudio</b></u></p>
             </div>
-        <button class="toggle-button" onclick="toggleInfo2()">2. Tratados y convenios Internacionales</button>
-          <script>
-            function toggleInfo2() {
-              const infoSection2 = document.getElementById('infoSection2');
-              infoSection2.classList.toggle('open');
-            }
-          </script>
- 
+        
+        <div class="column">
+            <p><b>Cuenca del río Danubio</b></p>
+            <p>Éxito: La Comisión Internacional para la Protección del Danubio ha facilitado la cooperación entre los países ribereños, logrando avances en la gestión sostenible y reducción de la contaminación.</p>
+            <p>Desafío: Dificultades en la gestión de embalses y represas, evidenciando la complejidad de equilibrar intereses divergentes.</p>
+        
+            <p><b>Río Mekong</b></p>
+            <p>Éxito: El Acuerdo para la Cooperación en la Gestión y Uso Sostenible de los Recursos Hídricos en la Cuenca del Río Mekong ha promovido la colaboración regional para abordar problemas comunes, como la gestión de represas y la protección del ecosistema.</p>
+            <p>Desafío: Disputas sobre la construcción de represas, subrayando la necesidad de una gestión cuidadosa y cooperativa.</p>
+        </div>
+        
+        <div class="column">
+            <p><u><b>Subsección sobre Teorías de Conflictos y su Aplicación al Recurso Hídrico</b></u></p>
+            <p><b>Teoría del Conflicto por Intereses Divergentes:</b></p>
+            <p>Aplicación: Cuando los estados ribereños tienen necesidades y objetivos contrastantes en el uso del agua, la negociación y la búsqueda de soluciones equitativas son esenciales para evitar conflictos.</p>
+            <p><b>Teoría del Conflicto por Escasez de Recursos:</b></p>
+            <p>Aplicación: En situaciones de escasez de agua, la cooperación se vuelve crucial para evitar conflictos violentos. Estrategias como la gestión eficiente del agua y la inversión en tecnologías sostenibles son fundamentales.</p>
+        </div>
+    </div>    
 </body>
 </html>

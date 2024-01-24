@@ -1,4 +1,72 @@
-class AlmacenReseñas {
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Almacenamiento de Reseñas con Calificación</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    textarea {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px;
+      margin-right: 10px;
+    }
+
+    .reseña {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 300px; /* Ajusta el ancho según tus preferencias */
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Deja tu Reseña</h1>
+  <label for="reseñaNombre">Nombre:</label>
+  <textarea id="reseñaNombre" rows="1" placeholder="Escribe tu nombre"></textarea>
+  <label for="reseñaTexto">Reseña:</label>
+  <textarea id="reseñaTexto" rows="4" placeholder="Escribe tu reseña aquí"></textarea>
+  <label for="calificacion">Calificación:</label>
+  <select id="calificacion" name="calificacion">
+    <option value="1">1 estrella</option>
+    <option value="1.5">1.5 estrellas</option>
+    <option value="2">2 estrellas</option>
+    <option value="2.5">2.5 estrellas</option>
+    <option value="3">3 estrellas</option>
+    <option value="3.5">3.5 estrellas</option>
+    <option value="4">4 estrellas</option>
+    <option value="4.5">4.5 estrellas</option>
+    <option value="5">5 estrellas</option>
+  </select>
+  <br>
+  <button id="guardarReseñaBtn">Guardar Reseña</button>
+  <button id="limpiarReseñasBtn">Limpiar Reseñas</button>
+  <button id="buscarReseñaBtn">Buscar Reseña</button>
+  <div id="historialReseñas"></div>
+
+  <script>
+    class AlmacenReseñas {
   constructor() {
       this.taula = document.getElementById('historialReseñas');
       this.dbName = 'ReseñasDB';
@@ -44,20 +112,12 @@ class AlmacenReseñas {
       request.onsuccess = () => {
           console.log('Reseña añadida con éxito');
           this.mostrarReseñas();
-          this.mostrarReseñaConClase(reseña);
       };
 
       request.onerror = (event) => {
           console.error('Error al añadir la reseña:', event.target.errorCode);
       };
   }
-
-  mostrarReseñaConClase(reseña) {
-    const div = document.createElement('div');
-    div.className = 'historialReseñas'; // Agregar la clase "historialReseñas"
-    div.innerHTML = `<strong>${reseña.nombre}</strong><br>Estrellas: ${reseña.calificacion}<br>${reseña.texto}`;
-    this.taula.appendChild(div);
-}
 
   limpiarReseñas() {
       const transaction = this.db.transaction([this.objectStoreName], 'readwrite');
@@ -130,3 +190,6 @@ document.getElementById('limpiarReseñasBtn').addEventListener('click', () => {
 document.getElementById('buscarReseñaBtn').addEventListener('click', () => {
   almacenReseñas.buscarReseña();
 });
+  </script>
+</body>
+</html>

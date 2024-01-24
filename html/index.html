@@ -21,7 +21,7 @@
                             <div class="desktopNav__tabAndLogoContainer">
                                 <div class="insider desktopNav__tabContainer">
                                 </div>
-                                <a class="desktopNav__logo" href="/">
+                                <a class="desktopNav__logo" href="/index">
                                     <img src="png/logo-blanco.png" alt="Logo nuestro" height="70">
                                 </a>
                             </div>
@@ -59,9 +59,9 @@
                                             class="desktopNav__link mvl-flyout-button" href="html/conclusiones.html">Conclusiones</a>
                                         <div class="desktopNav__flyout-container nav-flyout-container-7"></div>
                                     </li>
-                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-7"
+                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-8"
                                         class="desktopNav__link mvl-flyout-button" href="html/sobre-nosaltres.html">Nosotros</a>
-                                    <div class="desktopNav__flyout-container nav-flyout-container-7"></div>
+                                    <div class="desktopNav__flyout-container nav-flyout-container-8"></div>
                                 </li>
                                 </ul>
                             </div>
@@ -84,12 +84,29 @@
             <h2>Login</h2>
             <form action="/login" method="post">
                 <label for="username">Usuari</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username">
                 <br>
                 <label for="password">Contrasenya</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password">
                 <br><br>
                 <button class="animated-button">Iniciar sesión</button>
+                <button id="openPopupRegister" class="animated-button">Registrate</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close-popup-register" id="closePopupRegister">&times;</span>
+            <h2>Login</h2>
+            <form action="/register" method="post">
+                <label for="username">Usuari</label>
+                <input type="text" id="username" name="username">
+                <br>
+                <label for="password">Contrasenya</label>
+                <input type="password" id="password" name="password">
+                <br><br>
+                <button class="animated-button">Iniciar sesión</button>
+                <button id="" class="animated-button">Registrate</button>
             </form>
         </div>
     </div>
@@ -107,7 +124,7 @@
             <div id="China" class="draggable" draggable="true">China</div>
         </div>
 
-        <table class="tablagame">
+        <table class="tablagame" id="20">
             <tr>
                 <td>TOP 1.</td>
                 <td class="m06 droppable" id="top1">
@@ -173,8 +190,8 @@
                                 text: 'Distribución del Uso del Agua en España'
                             }
                         },
-                        responsive: false, // Deshabilita la responsividad
-                        maintainAspectRatio: false, // Deshabilita la relación de aspecto
+                        responsive: false,
+                        maintainAspectRatio: false, 
                     }
                 });
             });
@@ -191,29 +208,7 @@
 
             <div class="columna">
                 <h2>Reseñas</h2>
-                <div class="reviews-section">
-                    <div class="rating">4.8 <img src="png/star.png" height="20px"></div>
-                    <div class="review-count">Basado en 257 reseñas</div>
-                
-                    <div class="review">
-                      <div class="user">Usuario1</div>
-                      <div class="date">12 de febrero de 2023</div>
-                      <div class="comment">¡Excelente servicio! Muy satisfecho con la calidad y la atención al cliente.</div>
-                    </div>
-                
-                    <div class="review">
-                      <div class="user">Usuario2</div>
-                      <div class="date">8 de enero de 2024</div>
-                      <div class="comment">Producto de alta calidad. Entrega rápida. Recomiendo totalmente.</div>
-                    </div>
-
-                    <div class="review">
-                        <div class="user">Usuario2</div>
-                        <div class="date">15 de diciembre de 2023</div>
-                        <div class="comment">Producto de alta calidad. Entrega rápida. Recomiendo totalmente.</div>
-                      </div>
-                
-                  </div>
+                <div id="historialReseñas"></div>
                 </div>
 
             <div class="columna">
@@ -229,5 +224,6 @@
         <script type="text/javascript" src="js/drag.js"></script>
         <script type="text/javascript" src="js/brands.js"></script>
         <script type="text/javascript" src="js/login.js"></script>
+        <script type="text/javascript" src="js/resenas.js"></script>
 </body>
 </html>
