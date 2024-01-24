@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "65a950a68810883c01875ddc"
+  },
+  "password": "pol",
+  "username": "pol"
+},
+{
+  "_id": {
+    "$oid": "65a950f78810883c01875ddd"
+  },
+  "nom": "dani"
+},
+{
+  "_id": {
+    "$oid": "65a951628810883c01875dde"
+  },
+  "nom": "poldsa"
+},
+{
+  "_id": {
+    "$oid": "65a952a850713d1a3cb7491a"
+  },
+  "nom": "poldsa"
+}]

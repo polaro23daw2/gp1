@@ -141,10 +141,18 @@ function iniciar() {
                 });
                 response.end();
             }
-        }
-
-        // Rutas para servir archivos estáticos (CSS, JS, PNG)
-        else if (ruta.startsWith('/css/') || ruta.startsWith('/js/') || ruta.startsWith('/png/')) {
+        }else if(ruta === '/marco' && request.method === 'GET'){
+            fs.readFile("html/marco.html", function(err, html) {
+                if (err) {
+                    console.error("Error al leer index.html:", err);
+                    response.writeHead(500);
+                    response.end('Error del servidor: ' + err.message);
+                    return;
+                }
+                response.writeHead(200, { "Content-Type": "text/html" });
+                response.end(html);
+            });
+    }else if (ruta.startsWith('/css/') || ruta.startsWith('/js/') || ruta.startsWith('/png/')) {
             const filePath = ruta.substring(1);
             const fileExtension = ruta.split('.').pop();
 
