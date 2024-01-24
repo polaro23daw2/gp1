@@ -52,9 +52,9 @@
                                             class="desktopNav__link mvl-flyout-button" href="../html/tecnologias.html">Tecnologías y estrategias</a>
                                         <div class="desktopNav__flyout-container nav-flyout-container-5"></div>
                                     </li>
-                                    <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-6"
+                                    <!-- <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-6"
                                             class="desktopNav__link mvl-flyout-button" href="../jhtml/cambio-climatico.html">Cambio climático</a>
-                                        <div class="desktopNav__flyout-container nav-flyout-container-6"></div>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-6"></div> -->
                                     </li>
                                     <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-7"
                                             class="desktopNav__link mvl-flyout-button" href="../html/conclusiones.html">Conclusiones</a>
@@ -182,34 +182,48 @@
     <textarea id="reseñaTexto" rows="4" placeholder="Escribe tu reseña aquí"></textarea>
     <label for="calificacion">Calificación:</label>
     <select id="calificacion" name="calificacion">
-      <option value="1">1 estrella</option>
-      <option value="1.5">1.5 estrellas</option>
-      <option value="2">2 estrellas</option>
-      <option value="2.5">2.5 estrellas</option>
-      <option value="3">3 estrellas</option>
-      <option value="3.5">3.5 estrellas</option>
-      <option value="4">4 estrellas</option>
-      <option value="4.5">4.5 estrellas</option>
-      <option value="5">5 estrellas</option>
+        <option value="1">1 estrella</option>
+        <option value="5">1,5 estrellas</option>
+        <option value="5">2 estrellas</option>
+        <option value="5">2,5 estrellas</option>
+        <option value="5">3 estrellas</option>
+        <option value="5">3,5 estrellas</option>
+        <option value="5">4 estrellas</option>
+        <option value="5">4,5 estrellas</option>
+        <option value="5">5 estrellas</option>
     </select>
     <br>
     <button id="guardarReseñaBtn">Guardar Reseña</button>
+    <div class="historialReseñas"></div>
 </div>
+
 <script src="../js/resenas.js"></script>
-<footer class="page__header">
-        <div class="columna">
-          <p>© 2024 Balarocajó</p>
-        </div>
-        <div class="columna">
-          <h2>Direcció</h2>
-          <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjroq-90N-DAxWrQ6QEHbIrAPYQ9Rd6BAhHEAQ&url=%2Fmaps%2Fdir%2F%2Fjesuites%2Bel%2Bclot%2Fdata%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x12a4a32f21aff871%3A0x8a22bf1df6194fbd%3Fsa%3DX%26ved%3D2ahUKEwjroq-90N-DAxWrQ6QEHbIrAPYQ9Rd6BAg9EAA&usg=AOvVaw0bYQZT367pHZECDb59GHjT&opi=89978449" class="desktopNav__link mvl-flyout-button">C/ de València, 680, Sant Martí, 08027 Barcelona</a>
-        </div>
-        <div class="columna">
-          <h2>Contacte</h2>
-          <p>Email: info@fjeclot.edu</p>
-          <p>Teléfono: (+34) 933 52 50 52</p>
-        </div>
-        
-</footer>
+<br><br><br>
+        <footer class="page__header">
+            <div class="columna">
+                <h2>Direcció</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.217023956609!2d2.187923576060926!3d41.41280737129661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a32f21aff871%3A0x8a22bf1df6194fbd!2sEscola%20Jesu%C3%AFtes%20El%20Clot!5e0!3m2!1sca!2ses!4v1700584988956!5m2!1sca!2ses" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>          
+            </div>
+
+            <div class="columna">
+                <h2>Reseñas</h2>
+                <div class="historialReseñas"></div>
+                
+                <script src="../js/resenas.js"></script></div>
+
+            <div class="columna">
+                <h2>Contacte</h2>
+                <br><br>
+                <p>Email: <a href="mailto:info@fjeclot.edu">info@fjeclot.edu</a></p>
+                <p>Teléfono: (+34) <a href="tel:933525052">933 52 50 52</a></p>
+            </div>
+
+
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script type="text/javascript" src="js/drag.js"></script>
+        <script type="text/javascript" src="js/brands.js"></script>
+        <script type="text/javascript" src="js/login.js"></script>
+        <script type="text/javascript" src="js/resenas.js"></script>    
 </body>
 </html>
