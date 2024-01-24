@@ -8,7 +8,7 @@ const assert = require('assert');
 const cadenaConexion = 'mongodb://localhost:27017';
 
 function usuarioYContraseñaSonCorrectos(db, username, password, callback) {
-    db.collection('usuaris').findOne({ username: username }, function(err, user) {
+    db.collection('usuaris').findOne({ username: username }, function (err, user) {
         if (err) {
             callback(err, null);
         } else if (user && user.password === password) {
@@ -26,7 +26,7 @@ function iniciar() {
 
         // Rutas para servir archivos HTML
         if (ruta === '/index' && request.method === 'GET') {
-            fs.readFile("html/index.html", function(err, html) {
+            fs.readFile("html/index.html", function (err, html) {
                 if (err) {
                     console.error("Error al leer index.html:", err);
                     response.writeHead(500);
@@ -36,9 +36,19 @@ function iniciar() {
                 response.writeHead(200, { "Content-Type": "text/html" });
                 response.end(html);
             });
-            
+
+        } else if (ruta === '/marco.html' && request.method === 'GET') {
+            fs.readFile("html/marco.html", function (err, html) {
+                if (err) {
+                    response.writeHead(500);
+                    response.end('Error al leer el archivo marco.html');
+                } else {
+                    response.writeHead(200, { "Content-Type": "text/html" });
+                    response.end(html);
+                }
+            });
         } else if (ruta === '/login' && request.method === 'GET') {
-            fs.readFile("html/M11_login.html", function(err, html) {
+            fs.readFile("html/M11_login.html", function (err, html) {
                 if (err) {
                     response.writeHead(500);
                     response.end('Error al leer el archivo');
@@ -49,19 +59,19 @@ function iniciar() {
             });
         } else if (ruta === '/login' && request.method === 'POST') {
             let body = '';
-            request.on('data', function(chunk) {
+            request.on('data', function (chunk) {
                 body += chunk.toString();
             });
-            request.on('end', function() {
+            request.on('end', function () {
                 const post = querystring.parse(body);
                 const username = post.username;
                 const password = post.password;
 
-                MongoClient.connect(cadenaConexion, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
+                MongoClient.connect(cadenaConexion, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
                     assert.equal(null, err);
                     const db = client.db('daw2');
-                    
-                    usuarioYContraseñaSonCorrectos(db, username, password, function(err, correct) {
+
+                    usuarioYContraseñaSonCorrectos(db, username, password, function (err, correct) {
                         client.close();
                         if (err) {
                             response.writeHead(500);
@@ -69,7 +79,7 @@ function iniciar() {
                         } else if (correct) {
                             // Redirección a la página final
                             response.writeHead(302, {
-                                "Location": "/final",
+                                "Location": "/index",
                                 "Set-Cookie": `logged=true; username=${username}; HttpOnly`
                             });
                             response.end();
@@ -78,23 +88,23 @@ function iniciar() {
                             response.end('Usuario o contraseña incorrectos');
                         }
                     });
-                }); 
+                });
             });
         } else if (ruta === '/register' && request.method === 'POST') {
             let body = '';
-            request.on('data', function(chunk) {
+            request.on('data', function (chunk) {
                 body += chunk.toString();
             });
-            request.on('end', function() {
+            request.on('end', function () {
                 const post = querystring.parse(body);
                 const username = post.username;
                 const password = post.password;
-        
-                MongoClient.connect(cadenaConexion, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
+
+                MongoClient.connect(cadenaConexion, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
                     assert.equal(null, err);
                     const db = client.db('daw2');
-        
-                    db.collection('usuaris').findOne({ username: username }, function(err, user) {
+
+                    db.collection('usuaris').findOne({ username: username }, function (err, user) {
                         if (err) {
                             client.close();
                             response.writeHead(500);
@@ -105,7 +115,7 @@ function iniciar() {
                             response.end('El usuario ya existe');
                         } else {
                             // Aquí insertarías el nuevo usuario
-                            db.collection('usuaris').insertOne({ username: username, password: password }, function(err, res) {
+                            db.collection('usuaris').insertOne({ username: username, password: password }, function (err, res) {
                                 client.close();
                                 if (err) {
                                     response.writeHead(500);
@@ -120,12 +130,12 @@ function iniciar() {
                     });
                 });
             });
-    }else if(ruta === '/final') {
+        } else if (ruta === '/final') {
             // Verificar si la cookie de sesión está presente y es válida
             const cookies = parseCookies(request);
             if (cookies.logged && cookies.logged === 'true') {
                 // Si la sesión es válida, servir final.html
-                fs.readFile("html/index.html", function(err, html) {
+                fs.readFile("html/index.html", function (err, html) {
                     if (err) {
                         response.writeHead(500);
                         response.end('Error del servidor');
@@ -134,29 +144,18 @@ function iniciar() {
                         response.end(html);
                     }
                 });
-            }else {
+            } else {
                 // Si no hay sesión válida, redirigir a la página de inicio de sesión
                 response.writeHead(302, {
                     "Location": "/login"
                 });
                 response.end();
             }
-        }else if(ruta === '/marco' && request.method === 'GET'){
-            fs.readFile("html/marco.html", function(err, html) {
-                if (err) {
-                    console.error("Error al leer index.html:", err);
-                    response.writeHead(500);
-                    response.end('Error del servidor: ' + err.message);
-                    return;
-                }
-                response.writeHead(200, { "Content-Type": "text/html" });
-                response.end(html);
-            });
-    }else if (ruta.startsWith('/css/') || ruta.startsWith('/js/') || ruta.startsWith('/png/')) {
+        } else if (ruta.startsWith('/css/') || ruta.startsWith('/js/') || ruta.startsWith('/png/') || ruta.startsWith('/html/')) {
             const filePath = ruta.substring(1);
             const fileExtension = ruta.split('.').pop();
 
-            fs.readFile(filePath, function(err, content) {
+            fs.readFile(filePath, function (err, content) {
                 if (err) {
                     response.writeHead(404);
                     response.end('Archivo no encontrado');
@@ -170,7 +169,10 @@ function iniciar() {
                     contentType = 'text/css';
                 } else if (fileExtension === 'js') {
                     contentType = 'application/javascript';
+                } else if (fileExtension === 'html') {
+                    contentType = 'text/html';
                 }
+
 
                 response.writeHead(200, { "Content-Type": contentType });
                 response.end(content);
@@ -189,7 +191,7 @@ function parseCookies(request) {
     let list = {},
         rc = request.headers.cookie;
 
-    rc && rc.split(';').forEach(function(cookie) {
+    rc && rc.split(';').forEach(function (cookie) {
         let parts = cookie.split('=');
         list[parts.shift().trim()] = decodeURI(parts.join('='));
     });
