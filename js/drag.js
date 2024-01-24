@@ -56,11 +56,9 @@ function drop(event) {
         imagen.alt = 'Imagen correcta'; // Puedes proporcionar un texto alternativo
         imagenTd.appendChild(imagen); // Agregar la imagen al td
     
-    }else if (verificarTodosCorrectos()) {
-        alert('¡Todo correcto!');
-    }else {
+    }
+    else {
         // Agregar el icono de error después del texto
-        resultadoDiv.textContent = '¡Respuesta Incorrecta!';
         resultadoDiv.classList.remove('correcto');
         resultadoDiv.classList.add('incorrecto');
         
