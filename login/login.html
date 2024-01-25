@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login/Register</title>
+</head>
+
+<body>
+
+    <div class="contenedor" id="contenedor">
+        <div class="contenedor-formulario registrarse">
+            <form action="/register" method="post">
+                <h1>crear cuenta</h1> <br>
+                <label for="username">Usuari</label>
+                <input type="text" id="username" name="username">
+                <br>
+                <label for="password">Contrasenya</label>
+                <input type="password" id="password" name="password">
+                <button>iniciar session</button>
+            </form>
+        </div>
+        <div class="contenedor-formulario iniciar-sesion">
+            <form action="/login" method="post">
+                <h1>Registrarse</h1> <br>
+                <label for="username">Usuari</label>
+                <input type="text" id="username" name="username">
+                <br>
+                <label for="password">Contrasenya</label>
+                <input type="password" id="password" name="password">
+                <a href="#">Recuperar la contraseña</a> <br>
+                <button>Registrarse</button>
+            </form>
+        </div>
+        <div class="container-colores">
+            <div class="container">
+                <div class="panel-container container-izquierda">
+                    <h1>Bienvenido de vuelta</h1>
+                    <p>Inicia session para poder acceder</p>
+                    <button class="hidden" id="iniciar-sesion">iniciar session</button>
+                </div>
+                <div class="panel-container container-derecha">
+                    <h1>Hola, Registrate</h1>
+                    <p>Registrarte con tus datos</p>
+                    <button class="hidden" id="registrarse">Registrarte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>

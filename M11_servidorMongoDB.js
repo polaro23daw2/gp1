@@ -24,7 +24,6 @@ function iniciar() {
         const parsedUrl = url.parse(request.url, true);
         const ruta = parsedUrl.pathname;
 
-        // Rutas para servir archivos HTML
         if (ruta === '/index' && request.method === 'GET') {
             fs.readFile("html/index.html", function (err, html) {
                 if (err) {
@@ -42,16 +41,6 @@ function iniciar() {
                 if (err) {
                     response.writeHead(500);
                     response.end('Error al leer el archivo marco.html');
-                } else {
-                    response.writeHead(200, { "Content-Type": "text/html" });
-                    response.end(html);
-                }
-            });
-        } else if (ruta === '/login' && request.method === 'GET') {
-            fs.readFile("html/M11_login.html", function (err, html) {
-                if (err) {
-                    response.writeHead(500);
-                    response.end('Error al leer el archivo');
                 } else {
                     response.writeHead(200, { "Content-Type": "text/html" });
                     response.end(html);
@@ -99,11 +88,11 @@ function iniciar() {
                 const post = querystring.parse(body);
                 const username = post.username;
                 const password = post.password;
-
+        
                 MongoClient.connect(cadenaConexion, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
                     assert.equal(null, err);
                     const db = client.db('daw2');
-
+        
                     db.collection('usuaris').findOne({ username: username }, function (err, user) {
                         if (err) {
                             client.close();
@@ -111,30 +100,31 @@ function iniciar() {
                             response.end('Error del servidor');
                         } else if (user) {
                             client.close();
-                            response.writeHead(409); // Código de estado para conflicto
+                            response.writeHead(409);
                             response.end('El usuario ya existe');
                         } else {
-                            // Aquí insertarías el nuevo usuario
                             db.collection('usuaris').insertOne({ username: username, password: password }, function (err, res) {
                                 client.close();
                                 if (err) {
                                     response.writeHead(500);
                                     response.end('Error al registrar el usuario');
                                 } else {
-                                    // Usuario registrado correctamente
-                                    response.writeHead(200);
-                                    response.end('Usuario registrado con éxito');
+                                    // Usuario registrado correctamente, establece una cookie y redirige a /index
+                                    response.writeHead(302, {
+                                        "Location": "/index",
+                                        "Set-Cookie": `logged=true; username=${username}; HttpOnly`
+                                    });
+                                    response.end();
                                 }
                             });
                         }
                     });
                 });
             });
-        } else if (ruta === '/final') {
-            // Verificar si la cookie de sesión está presente y es válida
+        }
+         else if (ruta === '/final') {
             const cookies = parseCookies(request);
             if (cookies.logged && cookies.logged === 'true') {
-                // Si la sesión es válida, servir final.html
                 fs.readFile("html/index.html", function (err, html) {
                     if (err) {
                         response.writeHead(500);
@@ -145,7 +135,6 @@ function iniciar() {
                     }
                 });
             } else {
-                // Si no hay sesión válida, redirigir a la página de inicio de sesión
                 response.writeHead(302, {
                     "Location": "/login"
                 });
@@ -184,7 +173,7 @@ function iniciar() {
     }
 
     http.createServer(onRequest).listen(8888);
-    console.log("Servidor iniciado en http://localhost:8888");
+    console.log("Servidor iniciado en http://localhost:8888/index");
 }
 
 function parseCookies(request) {
