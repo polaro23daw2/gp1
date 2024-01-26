@@ -1,25 +1,24 @@
 [{
   "_id": {
-    "$oid": "65a950a68810883c01875ddc"
+    "$oid": "65b2781ddeaab110e7820341"
   },
+  "username": "pol",
   "password": "pol",
-  "username": "pol"
+  "mail": "pol@pol"
 },
 {
   "_id": {
-    "$oid": "65a950f78810883c01875ddd"
+    "$oid": "65b292eae517fc018de56d16"
   },
-  "nom": "dani"
+  "username": "uri",
+  "password": "uri",
+  "mail": "uri@uri"
 },
 {
   "_id": {
-    "$oid": "65a951628810883c01875dde"
+    "$oid": "65b29303e517fc018de56d17"
   },
-  "nom": "poldsa"
-},
-{
-  "_id": {
-    "$oid": "65a952a850713d1a3cb7491a"
-  },
-  "nom": "poldsa"
+  "username": "marc",
+  "password": "marc",
+  "mail": "marc@marc"
 }]
