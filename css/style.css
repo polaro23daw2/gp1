@@ -377,4 +377,5 @@ h3,h4{
 .historialReseñas {
   max-height: 300px; /* Establece la altura máxima que deseas para el área de desplazamiento */
   overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más grande que la altura especificada */
+  background-color: transparent;
 }

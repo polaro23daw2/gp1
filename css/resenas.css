@@ -50,14 +50,7 @@ button:hover {
   opacity: 1; 
 }
 
-#cuadradoEspecifico {
-  width: 459px;
-  height: 252px;
-  border: 1px solid black;
-  color: black;
-  background-color: lightgray;
-  overflow-y: auto;
-  }
+
 #contacto {
   width: 459px;
   height: 252px;
