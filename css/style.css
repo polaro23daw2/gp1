@@ -58,8 +58,9 @@ body {
 .desktopNav__link:hover {
     color: blue;
 }
-.userButton #usernameDisplay {
-  position: relative;
+
+.page__header .loginButton {
+  position: absolute;
   top: 10px;
   right: 10px;
   padding: 8px 16px;
@@ -68,7 +69,21 @@ body {
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
-      }
+}
+
+.page__header .loginButton a {
+  display: flex;
+  position: relative;
+  align-items: center; /* Centra verticalmente los elementos dentro del userButton */
+}
+
+.page__header .loginButton #usernameDisplay {
+  margin-right: 10px; /* Agrega un margen a la derecha del span */
+  position: relative;
+  color: white;
+}
+
+
 .loginButton {
     position: absolute;
     top: 10px;

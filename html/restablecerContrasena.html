@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/login.css">
     <link rel="icon" type="image/png" href="../png/logo-negro.png">
-    <title>Inicia sesión!</title>
+    <title>Has olvidado tu contraseña?</title>
     <style>
         input[type="text"], input[type="password"],input[type="email"], input[Type="confirmPassword"] {
             border: 2px solid #512da8;
@@ -22,26 +22,31 @@
             <form action="/restablecer" method="post">
                 <h2>Restablecer contraseña</h2><br>
                 <label for="username">Usuario</label>
-                <input type="text" id="username" name="username" placeholder="Introduce tu username" required>
+                <input type="text" id="username" name="username" placeholder="usuario" required>
                 <br>
-                <label for="mail">Usuario</label>
-                <input type="email" id="mail" name="mail" placeholder="Introduce tu Mail" required>
+                <label for="mail">Correo electrónico</label>
+                <input type="email" id="mail" name="mail" placeholder="tucorreo@gmail.com" required>
                 <br>
                 <label for="password">Nueva contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Nueva contraseña" required>
+                <input type="password" id="password" name="password" required>
                 <br>
-                <label for="confirmPassword">Nueva contraseña</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repite la contraseña" required>
+                <label for="confirmPassword">Repite tu contraseña</label>
+                <input type="password" id="confirmPassword" name="confirmPassword"  required>
                 <button>Restablecer contraseña</button>
             </form>
         </div>
         <div class="container-colores">
             <div class="container">
+                <div class="panel-container container-derecha">
+                    <h1>¡¡FLASHAZO!!</h1>
+                    <h1> Ya te acuerdas de tus datos?</h1><br>
+                    <p>Vuelve al inicio de sesión!</p><br>
+                    <button class="hidden" id="iniciar-sesion" onclick="location.href='../html/login.html'">Inicia sesión</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="../js/login.js"></script>
 </body>
 
 </html>
