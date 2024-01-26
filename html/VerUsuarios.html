@@ -1,13 +1,43 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marco Teórico | GP1 - Aigües</title>
+    <title>Tecnologías y Estrategias para la Resolución de Conflictos | GP1 - Aigües</title>
     <link rel="icon" type="image/png" href="../png/logo-negro.png">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/resenas.css">
+    <style>
+        .contenido-pagina {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+        #tablaUsuarios {
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+        #tablaUsuarios th, #tablaUsuarios td {
+            border: 2px solid black;
+            padding: 5px;
+        }
+        #cuadradoEspecifico {
+            width: 459px;
+            height: 252px;
+            border: 1px solid black;
+            color: black;
+            background-color: lightgray;
+            overflow-y: auto;
+            }
+        #contacto {
+            width: 459px;
+            height: 252px;
+            border: 1px solid black;
+            color: black;
+            background-color: lightgray;
+            margin-top: 77px;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,7 +45,7 @@
         <div class="userButton">
             <span id="usernameDisplay"></span>
         </div>
-        <button class="loginButton"><a href="login.html"><img src="../png/user.png"></a></button>
+        <button class="loginButton"><a href="../html/login.html"><img src="../png/user.png"></a></button>
         <nav class="navigation__container">
             <div class="navigation__container--navs navigation__container--fixed navigation__container--top">
                 <section class="desktopNav__container" data-top-component="desktop-nav" data-page-position="nav">
@@ -65,7 +95,7 @@
                                     <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-7"
                                         class="desktopNav__link mvl-flyout-button" href="../html/sobre-nosaltres.html">Nosotros</a>
                                     <div class="desktopNav__flyout-container nav-flyout-container-7"></div>
-                                </li>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -81,59 +111,52 @@
         <div class="single-slide" id="slide-5"></div>
     </div>
     <br><br><br>
-    <center><canvas id="myCanvas" width="1500" height="150" data-texto="MARCO TEÓRICO"></canvas></center>
+    <center><canvas id="myCanvas" width="1700" height="150" data-texto="Usuarios que estan en la base de datos."></canvas></center>
+    <script type="text/javascript" src="../js/canvas_titulos.js"></script>
+    <script type="text/javascript" src="../js/DomCanvasCookies.js"></script>
     <br><br><br>
-    <button class="toggle-button" onclick="toggleInfo1()">1. Definición de Seguridad Hídrica</button>
+    <div class="contenido-pagina">
+        <table id="tablaUsuarios">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <button><a href="../html/mapa.html">mapa</a></button>
     <script>
-        function toggleInfo1() {
-          const infoSection1 = document.getElementById('infoSection1');
-          infoSection1.classList.toggle('open');
+                if (!document.cookie.split('; ').find(row => row.startsWith('administrador=true'))) {
+        window.location.href = '/index';
         }
-      </script>
-    <div class="section-text" id="infoSection1">
-        <div class="image-container">
-          <img src="../png/SeguridadHidrica_spa.jpg" height="400px" alt="Seguridad Hídrica">
-        </div>
-            <div class="text-container">
-                <p><b>1. Definición de Seguridad Hídrica</b></p>
-                    <p>Es la capacidad de garantizar el acceso sostenible, equitativo y suficiente al agua para satisfacer las necesidades humanas básicas, así como para mantener la salud de los ecosistemas</p>
-                    <p>Esta seguridad implica la gestión adecuada de los recursos hídricos para prevenir la escasez, mejorar la calidad del agua, proteger contra inundaciones y asegurar la disponibilidad de agua para todos los usos esenciales, como el consumo humano, la agricultura y la industria.</p>
-        </div>
-    </div>
-      <button class="toggle-button" onclick="toggleInfo2()">2. Tratados y convenios Internacionales</button>
-      <script>
-        function toggleInfo2() {
-          const infoSection2 = document.getElementById('infoSection2');
-          infoSection2.classList.toggle('open');
-        }
-      </script>
-    <div class="section-text" id="infoSection2">
-        <div class="column">
-            <p><b>2. Tratados y convenios Internacionales</b></p>
-            <p>Los principales tratados y convenios que regulan el uso de aguas transfronterizas</p>
-            <p><u><b>Principios Jurídicos</b></u></p>
-            <p><u><b>Casos de Estudio</b></u></p>
-            </div>
-        
-        <div class="column">
-            <p><b>Cuenca del río Danubio</b></p>
-            <p>Éxito: La Comisión Internacional para la Protección del Danubio ha facilitado la cooperación entre los países ribereños, logrando avances en la gestión sostenible y reducción de la contaminación.</p>
-            <p>Desafío: Dificultades en la gestión de embalses y represas, evidenciando la complejidad de equilibrar intereses divergentes.</p>
-        
-            <p><b>Río Mekong</b></p>
-            <p>Éxito: El Acuerdo para la Cooperación en la Gestión y Uso Sostenible de los Recursos Hídricos en la Cuenca del Río Mekong ha promovido la colaboración regional para abordar problemas comunes, como la gestión de represas y la protección del ecosistema.</p>
-            <p>Desafío: Disputas sobre la construcción de represas, subrayando la necesidad de una gestión cuidadosa y cooperativa.</p>
-        </div>
-        
-        <div class="column">
-            <p><u><b>Subsección sobre Teorías de Conflictos y su Aplicación al Recurso Hídrico</b></u></p>
-            <p><b>Teoría del Conflicto por Intereses Divergentes:</b></p>
-            <p>Aplicación: Cuando los estados ribereños tienen necesidades y objetivos contrastantes en el uso del agua, la negociación y la búsqueda de soluciones equitativas son esenciales para evitar conflictos.</p>
-            <p><b>Teoría del Conflicto por Escasez de Recursos:</b></p>
-            <p>Aplicación: En situaciones de escasez de agua, la cooperación se vuelve crucial para evitar conflictos violentos. Estrategias como la gestión eficiente del agua y la inversión en tecnologías sostenibles son fundamentales.</p>
-        </div>
-    </div>
-    <br><br><br>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('/obtener-usuarios')
+            .then(response => response.json())
+            .then(usuarios => {
+                const tabla = document.getElementById('tablaUsuarios').getElementsByTagName('tbody')[0];
+                usuarios.forEach(usuario => {
+                    // Crear una nueva fila para el usuario
+                    const fila = tabla.insertRow();
+
+                    // Crear la celda del nombre y agregarla a la fila
+                    const celdaNombre = fila.insertCell();
+                    celdaNombre.textContent = usuario.username || 'Nombre no proporcionado';
+
+                    // Crear la celda del email y agregarla a la fila
+                    const celdaEmail = fila.insertCell();
+                    celdaEmail.textContent = usuario.mail || 'Correo no proporcionado';
+                });
+            })
+            .catch(error => console.error('Error al obtener usuarios:', error));
+    });
+    </script>
+
+
+
     <footer class="page__header">
         <div class="columna">
             <h2>Direcció</h2>

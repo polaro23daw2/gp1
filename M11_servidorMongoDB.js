@@ -19,6 +19,16 @@ function usuarioYContraseñaSonCorrectos(db, username, password, callback) {
     });
 }
 
+function obtenerUsuarios(db, callback) {
+    db.collection('usuaris').find({}).toArray(function(err, docs) {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, docs);
+        }
+    });
+}
+
 function iniciar() {
     function onRequest(request, response) {
         const parsedUrl = url.parse(request.url, true);
@@ -34,17 +44,6 @@ function iniciar() {
                 }
                 response.writeHead(200, { "Content-Type": "text/html" });
                 response.end(html);
-            });
-
-        } else if (ruta === '/marco.html' && request.method === 'GET') {
-            fs.readFile("html/marco.html", function (err, html) {
-                if (err) {
-                    response.writeHead(500);
-                    response.end('Error al leer el archivo marco.html');
-                } else {
-                    response.writeHead(200, { "Content-Type": "text/html" });
-                    response.end(html);
-                }
             });
         } else if (ruta === '/login' && request.method === 'POST') {
             let body = '';
@@ -65,19 +64,41 @@ function iniciar() {
                         if (err) {
                             response.writeHead(500);
                             response.end('Error del servidor');
-                        } else if (correct) {
-                            // Redirección a la página final
-                            response.writeHead(302, {
-                                "Location": "/index",
-                                "Set-Cookie": `logged=true; username=${username}; HttpOnly`
-                            });
+                        }else if (correct) {
+                            // Establecer la cookie de usuario para todos los usuarios logueados correctamente
+                            response.setHeader('Set-Cookie', [`username=${username}; Path=/;`]);
+                        
+                            const adminUsers = ['pol', 'uri', 'marc'];
+                            // Si el usuario es un administrador, además establecer la cookie pollita
+                            if (adminUsers.includes(username)) {
+                                response.setHeader('Set-Cookie', ['administrador=true; Path=/;', `username=${username}; Path=/;`]);
+                                console.log("Cookie de pollita añadida");
+                            }
+                        
+                            console.log("Usuario logueado:", username);
+                            // Ahora se pueden establecer las cabeceras de redirección
+                            response.writeHead(302, { "Location": "/index" });
                             response.end();
-                        } else {
+                        }
+                         else {
                             response.writeHead(401);
                             response.end('Usuario o contraseña incorrectos');
                         }
                     });
-                });
+                }
+                );
+            }
+            );
+        } else if (ruta === '/loginPagina' && request.method === 'GET') {
+            fs.readFile("html/login.html", function (err, html) {
+                if (err) {
+                    console.error("Error al leer login.html:", err);
+                    response.writeHead(500);
+                    response.end('Error del servidor: ' + err.message);
+                    return;
+                }
+                response.writeHead(200, { "Content-Type": "text/html" });
+                response.end(html);
             });
         } else if (ruta === '/register' && request.method === 'POST') {
             let body = '';
@@ -86,13 +107,15 @@ function iniciar() {
             });
             request.on('end', function () {
                 const post = querystring.parse(body);
+                console.log("Datos recibidos:", post);
                 const username = post.username;
                 const password = post.password;
-        
+                const mail = post.mail;
+
                 MongoClient.connect(cadenaConexion, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
                     assert.equal(null, err);
                     const db = client.db('daw2');
-        
+
                     db.collection('usuaris').findOne({ username: username }, function (err, user) {
                         if (err) {
                             client.close();
@@ -103,16 +126,15 @@ function iniciar() {
                             response.writeHead(409);
                             response.end('El usuario ya existe');
                         } else {
-                            db.collection('usuaris').insertOne({ username: username, password: password }, function (err, res) {
+                            db.collection('usuaris').insertOne({ username: username, password: password, mail: mail }, function (err, res) {
                                 client.close();
                                 if (err) {
                                     response.writeHead(500);
                                     response.end('Error al registrar el usuario');
                                 } else {
-                                    // Usuario registrado correctamente, establece una cookie y redirige a /index
                                     response.writeHead(302, {
                                         "Location": "/index",
-                                        "Set-Cookie": `logged=true; username=${username}; HttpOnly`
+                                        "Set-Cookie": `username=${username}; Path=/;`
                                     });
                                     response.end();
                                 }
@@ -121,26 +143,82 @@ function iniciar() {
                     });
                 });
             });
-        }
-         else if (ruta === '/final') {
-            const cookies = parseCookies(request);
-            if (cookies.logged && cookies.logged === 'true') {
-                fs.readFile("html/index.html", function (err, html) {
+        } else if (ruta === '/restablecer' && request.method === 'POST') {
+            let body = '';
+            request.on('data', function (chunk) {
+                body += chunk.toString();
+            });
+            request.on('end', function () {
+                const post = querystring.parse(body);
+                const username = post.username;
+                const mail = post.mail;
+                const password = post.password;
+                const confirmPassword = post.confirmPassword; // Asegúrate de cambiar el nombre del campo en tu formulario HTML para la confirmación de la contraseña
+
+                if (password !== confirmPassword) {
+                    response.writeHead(400);
+                    response.end('Las contraseñas no coinciden');
+                    return;
+                }
+
+                MongoClient.connect(cadenaConexion, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
+                    assert.equal(null, err);
+                    const db = client.db('daw2');
+
+                    db.collection('usuaris').findOne({ username: username, mail: mail }, function (err, user) {
+                        if (err) {
+                            client.close();
+                            response.writeHead(500);
+                            response.end('Error del servidor');
+                            return;
+                        }
+
+                        if (!user) {
+                            client.close();
+                            response.writeHead(404);
+                            response.end('Usuario no encontrado');
+                            return;
+                        }
+
+                        // Aquí actualizarías la contraseña en la base de datos
+                        db.collection('usuaris').updateOne(
+                            { _id: user._id },
+                            { $set: { password: password } },
+                            function (err, result) {
+                                client.close();
+                                if (err) {
+                                    response.writeHead(500);
+                                    response.end('Error al actualizar la contraseña');
+                                } else {
+                                    response.writeHead(302, { "Location": "/loginPagina" });
+                                    response.end();
+                                }
+                            }
+                        );
+                    });
+                });
+            });
+        } else if (ruta === '/obtener-usuarios' && request.method === 'GET') {
+            MongoClient.connect(cadenaConexion, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
+                if (err) {
+                    response.writeHead(500);
+                    response.end("Error de conexión a la base de datos");
+                    return;
+                }
+                const db = client.db('daw2');
+        
+                obtenerUsuarios(db, function(err, users) {
+                    client.close();
                     if (err) {
                         response.writeHead(500);
-                        response.end('Error del servidor');
+                        response.end("Error al recuperar usuarios");
                     } else {
-                        response.writeHead(200, { "Content-Type": "text/html" });
-                        response.end(html);
+                        response.writeHead(200, { "Content-Type": "application/json" });
+                        response.end(JSON.stringify(users));
                     }
                 });
-            } else {
-                response.writeHead(302, {
-                    "Location": "/login"
-                });
-                response.end();
-            }
-        } else if (ruta.startsWith('/css/') || ruta.startsWith('/js/') || ruta.startsWith('/png/') || ruta.startsWith('/html/')) {
+            });
+        }else if (ruta.startsWith('/css/') || ruta.startsWith('/js/') || ruta.startsWith('/png/') || ruta.startsWith('/html/')) {
             const filePath = ruta.substring(1);
             const fileExtension = ruta.split('.').pop();
 

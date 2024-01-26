@@ -90,7 +90,6 @@ body {
     opacity: 0;
     z-index: 1;
 }
-
 .contenedor.active .registrarse {
     transform: translateX(100%);
     opacity: 1;

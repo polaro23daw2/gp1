@@ -7,12 +7,16 @@
     <title>Conclusiones y Recomendaciones | GP1 - Aigües</title>
     <link rel="icon" type="image/png" href="../png/logo-negro.png">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/resenas.css">
 
 </head>
 
 <body>
     <header class="page__header">
-        <button class="botonlogin"><a href="html/login.html"><img src="../png/user.png"></a></button>
+        <div class="userButton">
+            <span id="usernameDisplay"></span>
+        </div>
+        <button class="loginButton"><a href="login.html"><img src="../png/user.png"></a></button>
         <nav class="navigation__container">
             <div class="navigation__container--navs navigation__container--fixed navigation__container--top">
                 <section class="desktopNav__container" data-top-component="desktop-nav" data-page-position="nav">
@@ -79,7 +83,6 @@
     </div>
     <br><br><br>
     <center><canvas id="myCanvas" width="1500" height="150" data-texto="CONCLUSIONES Y RECOMENDACIONS"></canvas></center>
-    <script src="../js/canvas_titulos.js"></script>
     <br>
     <div class="contenido-pagina">
         <p>Esta compilación de documentos ofrece una perspectiva multidimensional sobre temas globales clave, resaltando la interconexión y la importancia de enfoques holísticos para políticas y estrategias efectivas en un contexto globalizado.</p>
@@ -98,31 +101,32 @@
         <p>En conjunto, estos elementos subrayan la necesidad de enfoques multidisciplinarios y cooperación internacional para abordar los desafíos contemporáneos de manera efectiva.</p>
     </div>
     <br><br><br>
-        <footer class="page__header">
-            <div class="columna">
-                <h2>Direcció</h2>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.217023956609!2d2.187923576060926!3d41.41280737129661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a32f21aff871%3A0x8a22bf1df6194fbd!2sEscola%20Jesu%C3%AFtes%20El%20Clot!5e0!3m2!1sca!2ses!4v1700584988956!5m2!1sca!2ses" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>          
+    <footer class="page__header">
+        <div class="columna">
+            <h2>Direcció</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.217023956609!2d2.187923576060926!3d41.41280737129661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a32f21aff871%3A0x8a22bf1df6194fbd!2sEscola%20Jesu%C3%AFtes%20El%20Clot!5e0!3m2!1sca!2ses!4v1700584988956!5m2!1sca!2ses" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>          
+        </div>
+
+        <div class="columna">
+            <h2>Reseñas</h2>
+
+            <div class="historialReseñas" id="cuadradoEspecifico"></div>
+            
+        </div>
+        
+
+        <div class="columna">
+            <div id="contacto">
+            <h2>Contacte</h2>
+            <br><br>
+            <p>Email: <a href="mailto:info@fjeclot.edu">info@fjeclot.edu</a></p>
+            <p>Teléfono: (+34) <a href="tel:933525052">933 52 50 52</a></p>
             </div>
-
-            <div class="columna">
-                <h2>Reseñas</h2>
-                <div class="historialReseñas"></div>
-                
-                <script src="../js/resenas.js"></script></div>
-
-            <div class="columna">
-                <h2>Contacte</h2>
-                <br><br>
-                <p>Email: <a href="mailto:info@fjeclot.edu">info@fjeclot.edu</a></p>
-                <p>Teléfono: (+34) <a href="tel:933525052">933 52 50 52</a></p>
-            </div>
-
-
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script type="text/javascript" src="js/drag.js"></script>
-        <script type="text/javascript" src="js/brands.js"></script>
-        <script type="text/javascript" src="js/login.js"></script>
-        <script type="text/javascript" src="js/resenas.js"></script>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript" src="../js/resenas.js"></script>
+    <script type="text/javascript" src="../js/DomCanvasCookies.js"></script>
+    <script src="../js/canvas_titulos.js"></script>
 </body>
 </html>

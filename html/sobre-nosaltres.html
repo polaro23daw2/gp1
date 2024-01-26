@@ -12,7 +12,10 @@
 
 <body>
     <header class="page__header">
-        <button class="botonlogin"><a href="html/login.html"><img src="../png/user.png"></a></button>
+        <div class="userButton">
+            <span id="usernameDisplay"></span>
+        </div>
+        <button class="loginButton"><a href="login.html"><img src="../png/user.png"></a></button>
         <nav class="navigation__container">
             <div class="navigation__container--navs navigation__container--fixed navigation__container--top">
                 <section class="desktopNav__container" data-top-component="desktop-nav" data-page-position="nav">
@@ -179,33 +182,33 @@
     <div class="historialReseñas"></div>
 </div>
 
-<script src="../js/resenas.js"></script>
 <br><br><br>
-        <footer class="page__header">
-            <div class="columna">
-                <h2>Direcció</h2>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.217023956609!2d2.187923576060926!3d41.41280737129661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a32f21aff871%3A0x8a22bf1df6194fbd!2sEscola%20Jesu%C3%AFtes%20El%20Clot!5e0!3m2!1sca!2ses!4v1700584988956!5m2!1sca!2ses" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>          
-            </div>
+<footer class="page__header">
+    <div class="columna">
+        <h2>Direcció</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.217023956609!2d2.187923576060926!3d41.41280737129661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a32f21aff871%3A0x8a22bf1df6194fbd!2sEscola%20Jesu%C3%AFtes%20El%20Clot!5e0!3m2!1sca!2ses!4v1700584988956!5m2!1sca!2ses" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>          
+    </div>
 
-            <div class="columna">
-                <h2>Reseñas</h2>
-                <div class="historialReseñas"></div>
-                
-                <script src="../js/resenas.js"></script></div>
+    <div class="columna">
+        <h2>Reseñas</h2>
 
-            <div class="columna">
-                <h2>Contacte</h2>
-                <br><br>
-                <p>Email: <a href="mailto:info@fjeclot.edu">info@fjeclot.edu</a></p>
-                <p>Teléfono: (+34) <a href="tel:933525052">933 52 50 52</a></p>
-            </div>
+        <div class="historialReseñas" id="cuadradoEspecifico"></div>
+        
+    </div>
+    
 
-
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script type="text/javascript" src="js/drag.js"></script>
-        <script type="text/javascript" src="js/brands.js"></script>
-        <script type="text/javascript" src="js/login.js"></script>
-        <script type="text/javascript" src="js/resenas.js"></script>    
+    <div class="columna">
+        <div id="contacto">
+        <h2>Contacte</h2>
+        <br><br>
+        <p>Email: <a href="mailto:info@fjeclot.edu">info@fjeclot.edu</a></p>
+        <p>Teléfono: (+34) <a href="tel:933525052">933 52 50 52</a></p>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" src="../js/resenas.js"></script>
+<script type="text/javascript" src="../js/DomCanvasCookies.js"></script>
+<script src="../js/canvas_titulos.js"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="icon" type="image/png" href="../png/logo-negro.png">
+    <title>Inicia sesión!</title>
+    <style>
+        input[type="text"], input[type="password"],input[type="email"], input[Type="confirmPassword"] {
+            border: 2px solid #512da8;
+            padding: 2px; 
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor" id="contenedor">
+        <div class="contenedor-formulario iniciar-sesion">
+            <form action="/restablecer" method="post">
+                <h2>Restablecer contraseña</h2><br>
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Introduce tu username" required>
+                <br>
+                <label for="mail">Usuario</label>
+                <input type="email" id="mail" name="mail" placeholder="Introduce tu Mail" required>
+                <br>
+                <label for="password">Nueva contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Nueva contraseña" required>
+                <br>
+                <label for="confirmPassword">Nueva contraseña</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repite la contraseña" required>
+                <button>Restablecer contraseña</button>
+            </form>
+        </div>
+        <div class="container-colores">
+            <div class="container">
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/login.js"></script>
+</body>
+
+</html>
