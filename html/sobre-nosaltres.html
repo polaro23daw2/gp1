@@ -70,12 +70,37 @@
                                     <div class="desktopNav__flyout-container nav-flyout-container-7"></div>
                                 </li>
                                 </ul>
+                                <div id="adminDiv" style="display: none;">
+                                    <ul class="desktopNav__linkContainer">
+                                        <li class="desktopNav__linkWrapper">Administración |</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-1"></div>
+                                        </li>
+                                        <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-2"
+                                            class="desktopNav__link mvl-flyout-button" href="../html/VerUsuarios.html">Ver Usuarios</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-10"></div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                 </section>
             </div>
         </nav>
     </header>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+        const adminDiv = document.getElementById('adminDiv');
+
+        // Verificar si el usuario no es administrador
+        if (!document.cookie.split('; ').find(row => row.startsWith('administrador=true'))) {
+            // Ocultar el div si no es administrador
+            adminDiv.style.display = 'none';
+        } else {
+            // Mostrar el div si es administrador
+            adminDiv.style.display = 'block';
+        }
+        });
+   </script>
     <div class="slider-wrap">
         <div class="single-slide" id="slide-1"></div>
         <div class="single-slide" id="slide-2"></div>

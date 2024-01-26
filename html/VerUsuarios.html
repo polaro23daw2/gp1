@@ -42,10 +42,12 @@
 
 <body>
     <header class="page__header">
-        <div class="userButton">
-            <span id="usernameDisplay"></span>
-        </div>
-        <button class="loginButton"><a href="../html/login.html"><img src="../png/user.png"></a></button>
+        <button class="loginButton"><a href="../html/login.html">
+            <div class="userButton">
+                <span id="usernameDisplay"></span>
+            </div>
+            <img src="../png/user.png"></a>
+        </button>
         <nav class="navigation__container">
             <div class="navigation__container--navs navigation__container--fixed navigation__container--top">
                 <section class="desktopNav__container" data-top-component="desktop-nav" data-page-position="nav">
@@ -97,12 +99,37 @@
                                     <div class="desktopNav__flyout-container nav-flyout-container-7"></div>
                                     </li>
                                 </ul>
+                                <div id="adminDiv" style="display: none;">
+                                    <ul class="desktopNav__linkContainer">
+                                        <li class="desktopNav__linkWrapper">Administración |</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-1"></div>
+                                        </li>
+                                        <li class="desktopNav__linkWrapper"><a id="mvl-flyout-button-2"
+                                            class="desktopNav__link mvl-flyout-button" href="../html/VerUsuarios.html">Ver Usuarios</a>
+                                        <div class="desktopNav__flyout-container nav-flyout-container-10"></div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                 </section>
             </div>
         </nav>
     </header>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+        const adminDiv = document.getElementById('adminDiv');
+
+        // Verificar si el usuario no es administrador
+        if (!document.cookie.split('; ').find(row => row.startsWith('administrador=true'))) {
+            // Ocultar el div si no es administrador
+            adminDiv.style.display = 'none';
+        } else {
+            // Mostrar el div si es administrador
+            adminDiv.style.display = 'block';
+        }
+        });
+   </script>
     <div class="slider-wrap">
         <div class="single-slide" id="slide-1"></div>
         <div class="single-slide" id="slide-2"></div>
@@ -129,30 +156,30 @@
     </div>
     <button><a href="../html/mapa.html">mapa</a></button>
     <script>
-                if (!document.cookie.split('; ').find(row => row.startsWith('administrador=true'))) {
-        window.location.href = '/index';
+        if (!document.cookie.split('; ').find(row => row.startsWith('administrador=true'))) {
+            window.location.href = '/index';
         }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('/obtener-usuarios')
-            .then(response => response.json())
-            .then(usuarios => {
-                const tabla = document.getElementById('tablaUsuarios').getElementsByTagName('tbody')[0];
-                usuarios.forEach(usuario => {
-                    // Crear una nueva fila para el usuario
-                    const fila = tabla.insertRow();
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/obtener-usuarios')
+                .then(response => response.json())
+                .then(usuarios => {
+                    const tabla = document.getElementById('tablaUsuarios').getElementsByTagName('tbody')[0];
+                    usuarios.forEach(usuario => {
+                        // Crear una nueva fila para el usuario
+                        const fila = tabla.insertRow();
 
-                    // Crear la celda del nombre y agregarla a la fila
-                    const celdaNombre = fila.insertCell();
-                    celdaNombre.textContent = usuario.username || 'Nombre no proporcionado';
+                        // Crear la celda del nombre y agregarla a la fila
+                        const celdaNombre = fila.insertCell();
+                        celdaNombre.textContent = usuario.username || 'Nombre no proporcionado';
 
-                    // Crear la celda del email y agregarla a la fila
-                    const celdaEmail = fila.insertCell();
-                    celdaEmail.textContent = usuario.mail || 'Correo no proporcionado';
-                });
-            })
-            .catch(error => console.error('Error al obtener usuarios:', error));
-    });
+                        // Crear la celda del email y agregarla a la fila
+                        const celdaEmail = fila.insertCell();
+                        celdaEmail.textContent = usuario.mail || 'Correo no proporcionado';
+                    });
+                })
+                .catch(error => console.error('Error al obtener usuarios:', error));
+        });
     </script>
 
 
