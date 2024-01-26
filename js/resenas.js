@@ -1,7 +1,7 @@
 class AlmacenReseñas {
   constructor(contenedorClass) {
     this.contenedor = document.querySelector(`.${contenedorClass}`);
-    this.dbName = 'ReseñasDB32'; // Nombre de la base de datos fijo
+    this.dbName = 'ReseñasDB32';
     this.dbVersion = 1;
     this.objectStoreName = 'reseñas';
     this.db = null;
@@ -51,7 +51,7 @@ class AlmacenReseñas {
     };
   }
 
-  mostrarReseñas() {
+  mostrarReseñas(reseñas = null) {
     if (!this.contenedor) {
       console.error('No se encontró el contenedor.');
       return;
@@ -64,7 +64,7 @@ class AlmacenReseñas {
     const request = objectStore.getAll();
 
     request.onsuccess = () => {
-      const reseñasMostrar = request.result;
+      const reseñasMostrar = reseñas || request.result;
 
       reseñasMostrar.forEach((reseña, index) => {
         const div = document.createElement('div');
@@ -80,21 +80,53 @@ class AlmacenReseñas {
   }
 
   limpiarReseñas() {
-    // Puedes implementar la lógica para limpiar reseñas aquí
-    console.log('Reseñas limpiadas con éxito');
-    this.mostrarReseñas(); // Puedes llamar a mostrarReseñas después de limpiar si es necesario
+    const transaction = this.db.transaction([this.objectStoreName], 'readwrite');
+    const objectStore = transaction.objectStore(this.objectStoreName);
+    const request = objectStore.clear();
+
+    request.onsuccess = () => {
+      console.log('Reseñas eliminadas con éxito');
+      this.mostrarReseñas();
+    };
+
+    request.onerror = (event) => {
+      console.error('Error al eliminar las reseñas:', event.target.errorCode);
+    };
   }
 
   buscarReseña() {
-    // Puedes implementar la lógica de búsqueda de reseñas aquí
-    console.log('Buscando reseñas...');
+    const nombreBuscar = document.getElementById('buscarReseña').value.trim();
+
+    if (!nombreBuscar) {
+      console.log('Ingrese un nombre para buscar reseñas.');
+      return;
+    }
+
+    const transaction = this.db.transaction([this.objectStoreName], 'readonly');
+    const objectStore = transaction.objectStore(this.objectStoreName);
+    const index = objectStore.index('nombre');
+    const request = index.getAll(nombreBuscar);
+
+    request.onsuccess = () => {
+      const reseñasEncontradas = request.result;
+
+      if (reseñasEncontradas.length > 0) {
+        console.log('Reseñas encontradas:', reseñasEncontradas);
+        this.mostrarReseñas(reseñasEncontradas);
+      } else {
+        console.log('No se encontraron reseñas con ese nombre.');
+        this.mostrarReseñas([]);
+      }
+    };
+
+    request.onerror = (event) => {
+      console.error('Error al buscar reseñas:', event.target.errorCode);
+    };
   }
 }
 
-// Crear una instancia de la clase con el nombre de la clase del contenedor
 const almacenReseñas = new AlmacenReseñas('historialReseñas');
 
-// Event Listeners
 document.getElementById('guardarReseñaBtn').addEventListener('click', () => {
   almacenReseñas.guardarReseña();
 });

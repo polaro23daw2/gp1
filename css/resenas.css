@@ -24,7 +24,7 @@ select {
   padding: 10px;
   box-sizing: border-box;
 }
-#guardarReseñaBtn{
+#guardarReseñaBtn, #limpiarReseñasBtn, #buscarReseñaBtn{
   padding: 10px;
   margin-top: 10px; 
   width: 100%; 
