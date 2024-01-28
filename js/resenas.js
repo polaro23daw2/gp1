@@ -66,11 +66,35 @@ class AlmacenReseñas {
     request.onsuccess = () => {
       const reseñasMostrar = reseñas || request.result;
 
+      // Calcula el promedio de calificaciones
+      const totalReseñas = reseñasMostrar.length;
+      const totalCalificaciones = reseñasMostrar.reduce((sum, reseña) => sum + Number(reseña.calificacion), 0);
+      const averageRating = totalReseñas > 0 ? (totalCalificaciones / totalReseñas).toFixed(1) : 0;
+
+      // Agrega las etiquetas <p> con el promedio de calificaciones y el total de reseñas al contenedor principal
+      const p1 = document.createElement('p');
+      p1.id = 'averageRating';
+      p1.innerHTML = `<span id="average-rating">${averageRating}</span><img src="../png/star.png" height="30px">`;
+      this.contenedor.appendChild(p1);
+
+      const p2 = document.createElement('p');
+      p2.id = 'total-reviews';
+      p2.innerHTML = `Total de reseñas: <span id="review-count">${totalReseñas}</span>`;
+      this.contenedor.appendChild(p2);
+
+      // Agrega las reseñas al contenedor con líneas delgadas entre ellas
       reseñasMostrar.forEach((reseña, index) => {
         const div = document.createElement('div');
-        div.className = 'historialReseñas';
-        div.innerHTML = `<strong>${reseña.nombre}</strong><br>Estrellas: ${reseña.calificacion}<br>${reseña.texto}`;
+        div.className = 'historialReseñasItem';
+        div.innerHTML = `<strong>${reseña.nombre}</strong> | ${reseña.calificacion}<img src="../png/star.png" height="15px"><br><br>${reseña.texto}`;
         this.contenedor.appendChild(div);
+
+        // Agrega una línea delgada entre cada reseña, excepto la última
+        if (index < totalReseñas - 1) {
+          const linea = document.createElement('hr');
+          linea.className = 'lineaDelgada';
+          this.contenedor.appendChild(linea);
+        }
       });
     };
 

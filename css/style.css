@@ -315,13 +315,13 @@ display: inline-block;
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
-    width: 300px; /* Ajusta el ancho según tus preferencias */
+    width: 300px;
     display: inline-block;
   }
 
   .contenido-pagina {
-    margin: 10px; /* Centra el contenido y añade márgenes superior e inferior */
-    padding: 20px; /* Añade relleno al contenido */
+    margin: 10px;
+    padding: 20px;
     background-color: #fff;
     border-radius: 8px;
   }
@@ -331,7 +331,7 @@ display: inline-block;
   }
 
   h1, h2, p {
-    margin-bottom: 15px; /* Añade márgenes inferiores a títulos y párrafos para separarlos visualmente */
+    margin-bottom: 15px;
   }
 
   .section-text {
@@ -342,18 +342,16 @@ display: inline-block;
   }
 
   .section-text.open {
-    max-height: 1000px; /* Ajusta el valor según sea necesario para mostrar toda la información */
+    max-height: 1000px;
     transition: max-height 1s ease-in-out;
   }
 
   .image-container {
     flex: 1;
-    padding: 20px;
   }
 
   .text-container {
     flex: 1;
-    padding: 20px;
     box-sizing: border-box;
   }
 
@@ -371,11 +369,45 @@ display: inline-block;
     font-size: 16px;
     margin: 10px 0;
   }
+
 h3,h4{
   font-family: 'Bebas Neue';
 }
+
 .historialReseñas {
-  max-height: 300px; /* Establece la altura máxima que deseas para el área de desplazamiento */
-  overflow-y: auto; /* Añade un desplazamiento vertical si el contenido es más grande que la altura especificada */
+  max-height: 210px;
+  overflow-y: auto; 
   background-color: transparent;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.historialReseñasItem {
+  margin-bottom: 10px; /* Ajusta el espacio entre reseñas si es necesario */
+}
+
+.lineaDelgada {
+  border: 0.5px solid #ccc; /* Establece el estilo de la línea delgada */
+  margin: 10px 0; /* Ajusta el espacio entre la línea y las reseñas si es necesario */
+}
+
+.chart-container {
+  display: ruby;
+  justify-content: space-between;
+}
+
+#total-reviews {
+  font-size: small;
+  position: relative;
+}
+
+#averageRating {
+  margin: -2px;
+  position: relative;
+  font-size: 40px;
+  margin-bottom: 0px;
 }
