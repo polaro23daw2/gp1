@@ -66,10 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
     data: {
       labels: ['Desperdiciado', 'Utilizado'],
       datasets: [{
-        data: [15.4, 84.6], // 15.4% desperdiciado, 84.6% utilizado
+        data: [15.4, 84.6],
         backgroundColor: [
-          'rgba(255, 0, 0, 0.7)', // Rojo para desperdiciado
-          'rgba(0, 128, 0, 0.7)'  // Verde para utilizado
+          'rgba(255, 0, 0, 0.7)',
+          'rgba(0, 128, 0, 0.7)'
         ],
         borderWidth: 1
       }]
@@ -133,12 +133,9 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const adminDiv = document.getElementById('logoutButton');
 
-  // Verificar si el usuario no es administrador
   if (!document.cookie.split('; ').find(row => row.startsWith('loged=true'))) {
-    // Ocultar el div si no es administrador
     adminDiv.style.display = 'none';
   } else {
-    // Mostrar el div si es administrador
     adminDiv.style.display = 'block';
   }
 });

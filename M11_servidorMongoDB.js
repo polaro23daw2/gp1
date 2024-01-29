@@ -65,18 +65,15 @@ function iniciar() {
                             response.writeHead(500);
                             response.end('Error del servidor');
                         }else if (correct) {
-                            // Establecer la cookie de usuario para todos los usuarios logueados correctamente
-                            response.setHeader('Set-Cookie', [`username=${username}; Path=/;`]);
+                            response.setHeader('Set-Cookie', [`username=${username}; Path=/;`, `loged=true; Path=/;`]);
                         
-                            const adminUsers = ['pol', 'uri', 'marc'];
-                            // Si el usuario es un administrador, además establecer la cookie pollita
+                            const adminUsers = ['admin'];
                             if (adminUsers.includes(username)) {
-                                response.setHeader('Set-Cookie', ['administrador=true; Path=/;', `username=${username}; Path=/;`]);
-                                console.log("Cookie de pollita añadida");
+                                response.setHeader('Set-Cookie', ['administrador=true; Path=/;', `username=${username};Path=/;`,`loged=true; Path=/;`]);
+                                console.log("Cookie de politica añadida");
                             }
                         
                             console.log("Usuario logueado:", username);
-                            // Ahora se pueden establecer las cabeceras de redirección
                             response.writeHead(302, { "Location": "/index" });
                             response.end();
                         }
@@ -153,8 +150,7 @@ function iniciar() {
                 const username = post.username;
                 const mail = post.mail;
                 const password = post.password;
-                const confirmPassword = post.confirmPassword; // Asegúrate de cambiar el nombre del campo en tu formulario HTML para la confirmación de la contraseña
-
+                const confirmPassword = post.confirmPassword;
                 if (password !== confirmPassword) {
                     response.writeHead(400);
                     response.end('Las contraseñas no coinciden');
@@ -180,7 +176,6 @@ function iniciar() {
                             return;
                         }
 
-                        // Aquí actualizarías la contraseña en la base de datos
                         db.collection('usuaris').updateOne(
                             { _id: user._id },
                             { $set: { password: password } },
