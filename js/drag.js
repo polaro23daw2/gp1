@@ -1,3 +1,26 @@
+class Relaciones {
+    constructor() {
+      this.relaciones = {};
+    }
+
+    aRelacion(idTop, pais) {
+      this.relaciones[idTop] = pais;
+    }
+
+    verificarSiEsCorrecto(idTop, pais) {
+      return this.relaciones[idTop] === pais;
+    }
+
+    verificarTodosCorrectos() {
+      for (const id in this.relaciones) {
+        if (!this.verificarSiEsCorrecto(id, this.relaciones[id])) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+
 // Esta función inicia el proceso de arrastre y guarda el ID del elemento arrastrado.
 function dragStart(event) {
     event.dataTransfer.setData("text", event.target.id);
