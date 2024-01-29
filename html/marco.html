@@ -160,6 +160,48 @@
             <p>Aplicación: En situaciones de escasez de agua, la cooperación se vuelve crucial para evitar conflictos violentos. Estrategias como la gestión eficiente del agua y la inversión en tecnologías sostenibles son fundamentales.</p>
         </div>
     </div>
+    <button class="toggle-button" onclick="toggleInfo3()">3. Teorías de Conflictos</button>
+    <script>
+        function toggleInfo3() {
+          const infoSection3 = document.getElementById('infoSection3');
+          infoSection3.classList.toggle('open');
+        }
+      </script>
+      
+    <div class="section-text" id="infoSection3">
+        
+            
+        <h1>Teorías de Conflictos y el Agua</h1>
+            <div class="column">
+                
+                <h2>Teoría de Conflictos de Recursos</h2>
+                <p><strong>Descripción:</strong> Esta teoría se centra en cómo la escasez de recursos naturales, como el agua, puede conducir a conflictos entre diferentes actores.</p>
+                <p><strong>Aplicación al Agua:</strong> La escasez de agua es una fuente común de conflicto debido a la competencia por su acceso y control.</p>
+                <p><strong>Ejemplo y Análisis:</strong> Conflictos entre países que comparten cuencas fluviales, como el caso del Nilo entre Egipto y Etiopía.</p>
+            </div>
+            <div class="column">
+                <h2>Teoría de Dependencia Mutua</h2>
+                <p><strong>Descripción:</strong> Esta teoría sugiere que la interdependencia entre diferentes actores puede ser una fuerza estabilizadora.</p>
+                <p><strong>Aplicación al Agua:</strong> La cooperación es esencial en cuencas compartidas para garantizar un uso sostenible de los recursos hídricos.</p>
+                <p><strong>Ejemplo y Análisis:</strong> La Cuenca del Rin en Europa es un ejemplo de cooperación exitosa.</p>
+            </div>
+            <div class="column">
+                <h2>Teoría de Conflictos Políticos y Económicos</h2>
+                <p><strong>Descripción:</strong> Examina cómo los factores políticos y económicos influyen en los conflictos, incluyendo decisiones sobre el uso del agua.</p>
+                <p><strong>Aplicación al Agua:</strong> La gestión del agua puede convertirse en un instrumento político, y las disputas pueden surgir debido a desigualdades económicas en el acceso y control del agua.</p>
+                <p><strong>Ejemplo y Análisis:</strong> Bolivia experimentó conflictos relacionados con la privatización del agua en Cochabamba en 2000.</p>
+            </div>
+            <div class="column">
+                <h2>Teoría de Conflictos Ambientales</h2>
+
+                <p><strong>Descripción:</strong> Examina cómo los conflictos pueden surgir debido a impactos ambientales, incluyendo la contaminación y la degradación de los recursos naturales.</p>
+
+                <p><strong>Aplicación al Agua:</strong> La contaminación de fuentes de agua y la degradación de ecosistemas acuáticos pueden generar conflictos entre comunidades y sectores que dependen del agua para sus necesidades.</p>
+
+                <p><strong>Ejemplos y Análisis:</strong> En China, la contaminación del agua en los ríos industriales ha llevado a conflictos locales entre comunidades afectadas y empresas que descargan desechos en el agua.</p>
+            </div>
+    </div>
+    </div>
     <br><br><br>
     <footer class="page__header">
         <div class="columna">
@@ -169,10 +211,10 @@
 
         <div class="columna">
             <h2>Reseñas</h2>
-            <input type="text" id="buscarReseña" placeholder="Buscar reseña por nombre">
-            <button id="buscarReseñaBtn">Buscar Reseña</button>
-            <div class="historialReseñas" ></div>
 
+            <div class="historialReseñas" ></div>
+            
+            <script src="../js/resenas.js"></script>
         </div>
         
 

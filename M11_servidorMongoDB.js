@@ -238,6 +238,8 @@ function iniciar() {
                     contentType = 'application/javascript';
                 } else if (fileExtension === 'html') {
                     contentType = 'text/html';
+                } else if (fileExtension === 'pdf') {
+                    contentType = 'application/pdf';
                 }
 
 

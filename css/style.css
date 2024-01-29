@@ -362,7 +362,7 @@ display: inline-block;
   .toggle-button {
     cursor: pointer;
     padding: 10px;
-    background-color: #3498db;
+    background: linear-gradient(to right, #3498db, #2ecc709a);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -410,4 +410,16 @@ h3,h4{
   position: relative;
   font-size: 40px;
   margin-bottom: 0px;
+}
+
+#reseñaNombre::placeholder {
+  color: rgba(95, 95, 95, 0.438);
+  font-style: italic;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#reseñaTexto::placeholder {
+  color: rgba(95, 95, 95, 0.438);
+  font-style: italic;
+  font-family: 'Montserrat', sans-serif;
 }

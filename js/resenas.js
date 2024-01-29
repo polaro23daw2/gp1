@@ -68,7 +68,7 @@ class AlmacenReseñas {
 
       // Calcula el promedio de calificaciones
       const totalReseñas = reseñasMostrar.length;
-      const totalCalificaciones = reseñasMostrar.reduce((sum, reseña) => sum + Number(reseña.calificacion), 0);
+      const totalCalificaciones = reseñasMostrar.reduce((sum, reseña) => sum + parseInt(reseña.calificacion), 0);
       const averageRating = totalReseñas > 0 ? (totalCalificaciones / totalReseñas).toFixed(1) : 0;
 
       // Agrega las etiquetas <p> con el promedio de calificaciones y el total de reseñas al contenedor principal
@@ -86,7 +86,7 @@ class AlmacenReseñas {
       reseñasMostrar.forEach((reseña, index) => {
         const div = document.createElement('div');
         div.className = 'historialReseñasItem';
-        div.innerHTML = `<strong>${reseña.nombre}</strong> | ${reseña.calificacion}<img src="../png/star.png" height="15px"><br><br>${reseña.texto}`;
+        div.innerHTML = `<strong>${reseña.nombre}</strong><br>Estrellas: ${reseña.calificacion}<br>${reseña.texto}`;
         this.contenedor.appendChild(div);
 
         // Agrega una línea delgada entre cada reseña, excepto la última
@@ -119,27 +119,27 @@ class AlmacenReseñas {
   }
 
   buscarReseña() {
-    const nombreBuscar = document.getElementById('buscarReseña').value.trim();
-
-    if (!nombreBuscar) {
-      console.log('Ingrese un nombre para buscar reseñas.');
-      return;
-    }
+    const nombreBuscar = document.getElementById('buscarReseña').value.trim().toLowerCase();
 
     const transaction = this.db.transaction([this.objectStoreName], 'readonly');
     const objectStore = transaction.objectStore(this.objectStoreName);
     const index = objectStore.index('nombre');
-    const request = index.getAll(nombreBuscar);
 
-    request.onsuccess = () => {
-      const reseñasEncontradas = request.result;
+    const keyRange = IDBKeyRange.bound(nombreBuscar, nombreBuscar + '\uffff'); // Rango de búsqueda
 
-      if (reseñasEncontradas.length > 0) {
-        console.log('Reseñas encontradas:', reseñasEncontradas);
-        this.mostrarReseñas(reseñasEncontradas);
+    const request = index.openCursor(keyRange);
+
+    const reseñasEncontradas = [];
+
+    request.onsuccess = (event) => {
+      const cursor = event.target.result;
+
+      if (cursor) {
+        reseñasEncontradas.push(cursor.value);
+        cursor.continue();
       } else {
-        console.log('No se encontraron reseñas con ese nombre.');
-        this.mostrarReseñas([]);
+        // Cuando no hay más coincidencias, mostrar las reseñas encontradas
+        this.mostrarReseñas(reseñasEncontradas);
       }
     };
 
@@ -151,14 +151,15 @@ class AlmacenReseñas {
 
 const almacenReseñas = new AlmacenReseñas('historialReseñas');
 
+// Agrega un evento 'input' al campo de búsqueda para buscar automáticamente
+document.getElementById('buscarReseña').addEventListener('input', () => {
+  almacenReseñas.buscarReseña();
+});
+
 document.getElementById('guardarReseñaBtn').addEventListener('click', () => {
   almacenReseñas.guardarReseña();
 });
 
 document.getElementById('limpiarReseñasBtn').addEventListener('click', () => {
   almacenReseñas.limpiarReseñas();
-});
-
-document.getElementById('buscarReseñaBtn').addEventListener('click', () => {
-  almacenReseñas.buscarReseña();
 });

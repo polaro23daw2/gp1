@@ -190,9 +190,9 @@
     <div class="reseñas">
         <h1>Deja tu Reseña</h1>
         <label for="reseñaNombre">Nombre:</label>
-        <textarea id="reseñaNombre" rows="1" placeholder="Escribe tu nombre"></textarea>
+        <textarea id="reseñaNombre" rows="1" placeholder="Escribe tu nombre" required></textarea>
         <label for="reseñaTexto">Reseña:</label>
-        <textarea id="reseñaTexto" rows="4" placeholder="Escribe tu reseña aquí"></textarea>
+        <textarea id="reseñaTexto" rows="4" placeholder="Escribe tu reseña aquí" required></textarea>
         <label for="calificacion">Calificación:</label>
         <select id="calificacion" name="calificacion">
             <option value="1">1 estrella</option>
@@ -203,13 +203,12 @@
             <option value="3.5">3,5 estrellas</option>
             <option value="4">4 estrellas</option>
             <option value="4.5">4,5 estrellas</option>
-            <option value="5">5 estrellas</option>
+            <option value="5" selected>5 estrellas</option>
         </select>
         <br>
         <button id="guardarReseñaBtn">Guardar Reseña</button>
         <button id="limpiarReseñasBtn">Limpiar Reseñas</button>
         <input type="text" id="buscarReseña" placeholder="Buscar reseña por nombre">
-        <button id="buscarReseñaBtn">Buscar Reseña</button>
     </div>
 
     <br><br><br>
